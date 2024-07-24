@@ -53,6 +53,7 @@ public class Main
         // Variable name: name
         // Data Type: string (names/words are strings)
         String name = "Valerie Kuan";
+
         System.out.println("1. Declare a variable to hold my name.");
         System.out.println("My name: " + name);
         System.out.println();
@@ -61,6 +62,7 @@ public class Main
         // Variable name: age
         // Data Type: int (age is a whole number)
         int age = 23;
+
         System.out.println("2. Declare a variable to hold my age.");
         System.out.println("My age: " + age);
         System.out.println();
@@ -69,6 +71,7 @@ public class Main
         // Variable name: pi
         // Data Type: double (pi is a number with decimal places)
         double pi  = 3.1415;
+
         System.out.println("3. Declare a variable that holds the first 5 digits of pi.");
         System.out.println("First 5 digits of pi: " + pi);
         System.out.println();
@@ -78,6 +81,7 @@ public class Main
         // Variable name: price
         // Data Type: double (price contains a dollar and cent value)
         double price = 19.5;
+
         System.out.println("4. Declare a variable to hold the price of an adult meal at a buffet.");
         System.out.println("Adult meal price at a buffet: " + price);
         System.out.println();
@@ -111,6 +115,7 @@ public class Main
         // as a variable that you have used before.
 
         String favoriteSuperHero = "Spiderman";
+
         System.out.println("5. Declare a variable for your favorite superhero.");
         System.out.println("My favorite superhero: " + favoriteSuperHero);
         System.out.println();
@@ -120,6 +125,7 @@ public class Main
         // questions and each question is worth 1 point.
         // (You can choose the score)
         int testScore = 78;
+
         System.out.println("6. Declare a variable to hold the test score.");
         System.out.println("My test score: " + testScore);
         System.out.println();
@@ -130,7 +136,9 @@ public class Main
         // population in the United States.
         // (search what the population is today)
         System.out.println("7. Declare a variable to hold the current population in the United States.");
+
         long USPopulation = 333300000;    // 333.3million, which is too large for the max possible value for int
+
         System.out.println("Current US population: " + USPopulation);
         System.out.println();
 
@@ -138,6 +146,7 @@ public class Main
         // population in China.
         // (search what the population is today) 1.412 billion
         long ChinaPopulation = 1412000000;
+
         System.out.println("8. Declare a variable to hold the current population in China.");
         System.out.println("Current Chinese population: " + ChinaPopulation);
         System.out.println();
@@ -146,7 +155,9 @@ public class Main
         // population in the world.
         // (search what the population is today) // 7.951 billion
         System.out.println("9. Declare a variable to hold the current population in the world.");
+
         long worldPopulation = 7951000000L;
+
         System.out.println("Current world population: " + worldPopulation);
         System.out.println();
 
@@ -154,7 +165,9 @@ public class Main
         // 10. Declare a variable that specifies whether
         // or not your mouse is wireless.
         System.out.println("10. Declare a variable that specifies whether your mouse is wireless or not.");
+
         boolean wirelessMouse = false;
+
         System.out.println("Is my mouse wireless? " + wirelessMouse);
         System.out.println();
 
@@ -164,6 +177,7 @@ public class Main
         // to store the Latitude and Longitude.
         double hometownLongitude = 37.4323;
         double hometownLatitude = 121.8996;
+
         System.out.println("11. Search what the longitude and latitude of your hometown are");
         System.out.println("Hometown Longitude: " + hometownLongitude);
         System.out.println("Hometown Latitude: " + hometownLatitude);
@@ -172,7 +186,9 @@ public class Main
         // 12. Create a variable that holds the current
         // Microsoft stock price.
         System.out.println("12. What is the current Microsoft stock price?");
+
         double microsoftStock = 444.85;
+
         System.out.println("Current Microsoft stock price: " + microsoftStock);
     }
 
@@ -213,6 +229,7 @@ public class Main
         // How many shots did Pete take?
         int peteBasketballShots = 7;
         int peteScored = peteBasketballShots - 3;
+
         System.out.println("13. How many shots did Pete take in his last basketball game?");
         System.out.println("Pete took " + peteBasketballShots + " shots in his last basketball game.");
         System.out.println();
@@ -223,7 +240,9 @@ public class Main
 
         // How many 2 point shots did Pete make?\
         System.out.println("14. How many 2 point shots did Pete make in his last basketball game?");
+
         int peteTwoPointShots = 20 - 6 - 3;
+
         System.out.println("Pete made " + peteTwoPointShots + " two-point shots in his last basketball game.");
         System.out.println();
 
@@ -233,9 +252,11 @@ public class Main
 
         // How many total shots did they make?
         System.out.println("15. How many shots did Pete and Pat make collectively?");
+
         int peteShots = 6;
         int patShots = peteShots * 2;
         int petePatTotalShots = peteShots + patShots;
+
         System.out.println("Pete and Pat collectively made " + petePatTotalShots + " shots.");
         System.out.println();
 
@@ -245,12 +266,16 @@ public class Main
         // before the game ends, how many total shots
         // did the Terrifying Twosome make in the game?
         System.out.println("16. How many shots did the Terrifying Twosome make in the game?");
+
         int peteTerrifyingTwosome = 13;
         peteTerrifyingTwosome++;
+
         int patTerrifyingTwosome = 9;
         patTerrifyingTwosome++;
+
         int totalTerrifyingTwosome = peteTerrifyingTwosome + patTerrifyingTwosome;
-        System.out.println("The Terrifying Twosome colllectively made " + totalTerrifyingTwosome + " shots during the game.");
+
+        System.out.println("The Terrifying Twosome collectively made " + totalTerrifyingTwosome + " shots during the game.");
         System.out.println();
 
 
@@ -258,21 +283,36 @@ public class Main
         // he missed 4 shots.
 
         // What percentage of his shots did he make?
-        int peteShotsScored = 11;
-        int peteMissedShots = 4;
-        int peteTotalShots = peteShotsScored - peteMissedShots;
+        System.out.println("17. What percentage of Pete's shots did he make in his last game?");
 
+        int peteShotsMade = 11;
+        int peteMissedShots = 4;
+
+        double peteDecimalShotsScored = (peteShotsMade - peteMissedShots) / (double) peteShotsMade;
+        double petePercentageShotsScored = peteDecimalShotsScored * 100;
+
+        System.out.println("Pete made " + petePercentageShotsScored +"% of his shots.");
+        System.out.println();
 
 
 
         // 18. Pete and Pat have decided to only take 3 point
         // shots in their next game. Together they make 70%
         // of their 3 point shots.
-
+        System.out.println("18. How many shots do Pete and Pat have to take to win this game?");
         // The team that they are playing scores 31 points a game.
 
         // How many shots do Pete and Pat have to take to win
         // this game?
+        int opposingTeamPoints = 31;
+        double petePatSuccessfulShots = 0.7;    // the percentage of shots they make
+
+        int petePat3Pts = opposingTeamPoints / 3;  // evaluates to 10, but need to beat the opposing team and score 11 times
+        petePat3Pts++;                      // +1 so we can win (these are the successful shots, NOT total)
+
+        double petePatWin = petePat3Pts / petePatSuccessfulShots;   // total shots made to win
+        System.out.println("Pete and Pat need to make " + petePatWin + " shots to win, which is approximately 16 total shots.");
+
     }
     
     public static void clairesCookies()
@@ -290,10 +330,17 @@ public class Main
         // 19. Claire sells cookies by the dozen. Sean has 14 students
         // in his class. He has bought 3 dozen cookies for his class.
 
+        System.out.println("19. How many cookies will Sean give to each of his students?");
+
         // Sean wants to divide the cookies evenly between
         // his students. How many cookies will each student
         // receive? (Students can only receive whole cookies)
+        int students = 14;
+        int totalCookies = 3 * 12;
 
+        int cookiesPerStudent = (int) Math.floor(totalCookies / (double) students);    // round down to the nearest whole number
+
+        System.out.println("Cookies per student: " + cookiesPerStudent);
 
 
         // 20. Sean has 14 students in his class.
@@ -303,14 +350,27 @@ public class Main
         // his students. After giving the students their
         // cookies, how many cookies will be left over?
 
+        System.out.println("20. How many cookies will be left over after giving the cookies to his students?");
+
+        int cookiesLeft = totalCookies - (cookiesPerStudent * students);
+
+        System.out.println("There would be " + cookiesLeft + " cookies left.");
+        System.out.println();
+
 
 
         // 21. Sean's class has earned a cookie party.
 
         // If Sean has 14 students, how many dozen cookies
         // does he need to buy from Claire's Cookies so that
-        // each student can receive 3 cookies.
+        // each student can receive 3 cookies?
+        int newCookiesPerStudent = 3;
+        int cookiesConsumed = students * newCookiesPerStudent;    // 42 cookies will be eaten
 
+        int dozensRequired = (int) Math.ceil( (double) cookiesConsumed / 12);    // where 12 represents dozens
+
+        System.out.println("Sean needs to buy " + dozensRequired + " dozen cookies so his students can each have 3 cookies.");
+        System.out.println();
 
 
         // 22. Sean's class has earned a cookie party. The number
@@ -327,14 +387,25 @@ public class Main
         // all scored above 90. The rest of the class scored
         // below 90.
 
-        // How many dozen cookies does Sean need to buy.
+        // How many dozen cookies does Sean need to buy?
+        System.out.println("How many dozen cookies does Sean need to buy if he distributes cookies based on test score?");
+        int perfect = 2 * 4;
+        int as = 4 * 3;
+        int others = (14 - 2 - 4) * 2;
 
+        int sumOfCookies = perfect + as + others;
+        int dozensForSumOfCookies = (int) Math.ceil( (double) sumOfCookies / 12);
+
+        System.out.println(dozensForSumOfCookies);
+        System.out.println();
 
 
         // 23. If Claire's Cookies sells each dozen cookies for 12.99,
         // how much will it cost Sean to buy 4 dozen cookies.
-
-
+        System.out.println("How much will it cost for Sean to buy 4 dozen cookies if a dozen costs 12.99?");
+        double fourDozenCost = 4 * 12.99;
+        System.out.println("$" + fourDozenCost);
+        System.out.println();
 
         // (Use this information for the next several questions)
         // Claire now charges different prices for different
