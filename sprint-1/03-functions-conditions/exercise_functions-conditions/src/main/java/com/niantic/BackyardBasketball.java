@@ -49,16 +49,14 @@ public class BackyardBasketball
         // variables for calculateShotsRequired
         int desiredScore;   // only one bc reuse from the other function
 
-        System.out.println("Shot percentage: " + shotPercentage);
-
         System.out.println("Desired score:");
         desiredScore = userInput.nextInt();
         userInput.nextLine();
 
-        System.out.println("Three pointers? " + isThree);
+        int shotsRequired = calculateShotsRequired(shotPercentage, desiredScore,isThree);
+        System.out.println("Shots required: " + shotsRequired);
 
-
-
+        userInput.close();
     }
     /*
      * Teams that play in the backyard league want to be able
@@ -138,6 +136,22 @@ public class BackyardBasketball
      */
     public static int calculateShotsRequired(int shotPercentage, int desiredScore, boolean isThree)
     {
-        return 0;
+        int pointsPerShot;
+
+        if (isThree) {
+            pointsPerShot = 3;
+        } else {
+            pointsPerShot = 2;
+        }
+
+        // Calculate the minimum number of shots needed without considering accuracy
+        int minShots = (int) Math.ceil((double) desiredScore / pointsPerShot);
+
+        // Adjust shots based on shotPercentage
+        double accuracy = 1.0 / ((double) shotPercentage / 100.0);
+        int shotsRequired = (int) Math.ceil(minShots * accuracy);
+
+        return shotsRequired;
     }
+
 }
