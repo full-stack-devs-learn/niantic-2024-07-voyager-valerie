@@ -91,6 +91,8 @@ public static void main(String[] args)
 {
     // add your code here
     displayTeamScores(1, "Georgia", 12, 14, 6, 7);
+    displayTeamScores(4, "Michigan", 10, 7, 0, 17);
+    displayTeamScores(5, "Clemson", 14, 6, 8, 10);
 }
 
 ```
