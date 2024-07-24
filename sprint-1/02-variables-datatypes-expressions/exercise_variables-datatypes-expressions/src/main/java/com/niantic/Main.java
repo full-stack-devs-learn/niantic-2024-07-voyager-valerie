@@ -286,7 +286,7 @@ public class Main
         int peteShotsMade = 11;
         int peteMissedShots = 4;
 
-        double peteDecimalShotsScored = (peteShotsMade - peteMissedShots) / (double) peteShotsMade;
+        double peteDecimalShotsScored = (peteShotsMade) / (double) (peteShotsMade + peteMissedShots);
         double petePercentageShotsScored = peteDecimalShotsScored * 100;
 
         System.out.println("Pete made " + petePercentageShotsScored +"% of his shots.");
