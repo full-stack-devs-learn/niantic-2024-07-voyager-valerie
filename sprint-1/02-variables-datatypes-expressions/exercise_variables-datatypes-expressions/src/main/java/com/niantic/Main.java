@@ -551,7 +551,10 @@ public class Main
 
         // 31. How much money does Elliot earn per hour
         // on a 100 x 50 foot yard?
+        System.out.println("31. How much does Elliot earn per hour on a  100 x 50 ft lawn?");
 
+        double mediumHourlyEarnings = mediumLawnEarnings / mediumTimeSpent;
+        System.out.println("$" + mediumHourlyEarnings);
 
 
         // 32. What is Elliot's cost per hour on a medium
