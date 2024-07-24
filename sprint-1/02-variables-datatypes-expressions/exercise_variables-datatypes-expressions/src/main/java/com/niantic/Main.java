@@ -396,7 +396,7 @@ public class Main
         int sumOfCookies = perfect + as + others;
         int dozensForSumOfCookies = (int) Math.ceil( (double) sumOfCookies / 12);
 
-        System.out.println(dozensForSumOfCookies);
+        System.out.println(dozensForSumOfCookies + " dozen cookies");
         System.out.println();
 
 
@@ -425,22 +425,68 @@ public class Main
         // 9                 15               18
 
         // 24. How many total dozen cookies does Sean need to buy?
+        System.out.println("24. How many total dozen cookies does Sean need to buy?");
+        int dozen = 12;
 
+        // round up so all students can get all the cookie types of their choosing
+        double dozenSnickerDoodle = Math.ceil(9.0 / dozen);
+        //System.out.println(dozenSnickerDoodle);
+        double dozenChocolateChip = Math.ceil(15.0 / dozen);
+        //System.out.println(dozenChocolateChip);
+        double dozenFrostedChocolateChip = Math.ceil(18.0 / dozen);
+        //System.out.println(dozenFrostedChocolateChip);
 
+        int totalDozens = (int) dozenSnickerDoodle + (int) dozenChocolateChip + (int) dozenFrostedChocolateChip;
+
+        System.out.println(totalDozens + " dozen cookies.");
+        System.out.println();
 
         // 25. What is the total cost of this order?
+        System.out.println("25. What is the total cost of this order?");
 
+        double snickerDoodleCost = 12.99 * dozenSnickerDoodle;
+        double chocolateChipCost = 13.99 * dozenChocolateChip;
+        double frostedChocolateChipCost = 15.99 * dozenFrostedChocolateChip;
 
+        double cookieOrderCost = snickerDoodleCost + chocolateChipCost + frostedChocolateChipCost;
+
+        System.out.println("$" + cookieOrderCost);
+        System.out.println();
 
         // 26. How many cookies will be left over of each type of cookie?
         // (Snicker Doodles, Chocolate Chip, Frosted Chocolate Chip)
+        System.out.println("How many of each type of cookie will be left over?");
 
+        int snickerDoodleOrder = 9;
+        int chocolateChipOrder = 15;
+        int frostedChocolateChipOrder = 18;
+
+        int leftoverSnickerDoodle = (int) dozenSnickerDoodle * dozen - snickerDoodleOrder;
+        int leftoverChocolateChip = (int) dozenChocolateChip * dozen - chocolateChipOrder;
+        int leftoverFrostedChocolateChip = (int) dozenFrostedChocolateChip * dozen - frostedChocolateChipOrder;
+
+        System.out.println(leftoverSnickerDoodle + " Snicker Doodles cookies");
+        System.out.println(leftoverChocolateChip + " Chocolate Chip cookies");
+        System.out.println(leftoverFrostedChocolateChip + " Frosted Chocolate Chip cookies");
+        System.out.println();
 
 
         // 27. How much money could Sean have saved if he would
-        // have bought: 2 dz Frosted Chocolate Chip
+        // have bought:
+        System.out.println("27. How much money could Sean have saved if he ordered 2 dz Frosted Chocolate Chip, 1 dz Chocolate Chip, 1 dz Snicker Doodle?");
+        // 2 dz Frosted Chocolate Chip
         //              1 dz Chocolate Chip
         //              1 dz Snicker Doodle
+
+        double diffSnickerDoodle = 12.99 * 1;
+        double diffChocolateChip =  13.99 * 1;
+        double diffFrostedChocolateChip = 15.99 * 2;
+
+        double sumOfDifferentOrder = diffSnickerDoodle + diffChocolateChip + diffFrostedChocolateChip;
+
+        double diffOfTwoOrders = cookieOrderCost - sumOfDifferentOrder;
+        System.out.println("Sean could've saved " + "$" + diffOfTwoOrders);
+        System.out.println();
     }
 
 
