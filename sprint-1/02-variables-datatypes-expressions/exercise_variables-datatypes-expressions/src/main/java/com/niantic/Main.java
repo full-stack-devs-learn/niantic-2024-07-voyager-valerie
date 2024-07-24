@@ -519,7 +519,14 @@ public class Main
 
         // 28. What is the total cost to Elliot when
         // he mows a yard that is 100 x 50 feet?
+        System.out.println("28. What is the total cost to Elliot when he mows a 100 x 50 feet lawn?");
 
+        int lawnSize = 100 * 50;
+        double mowingExpense = 2.5;
+        int mowingSqFt = 1000;
+
+        double lawnExpense = ( (double) lawnSize / mowingSqFt) * mowingExpense;
+        System.out.println("It costs Elliot " + lawnExpense + " to mow a 100 x 50 feet lawn.");
 
 
         // 29. How much total money does Elliot earn
