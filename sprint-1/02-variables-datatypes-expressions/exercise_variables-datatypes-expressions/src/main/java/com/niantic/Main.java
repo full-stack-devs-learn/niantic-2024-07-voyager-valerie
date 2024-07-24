@@ -540,7 +540,13 @@ public class Main
 
         // 30. How much time does it take Elliot to mow
         // a 100 x 50 ft yard?
+        System.out.println("30. How much time does it take Elliot to mow a 100 x 50 ft lawn?");
 
+        int mediumMowingRate = mediumLawnSize / mowingSqFt;
+        double mowingSpeed = 0.75;   // convert 45 min to hrs
+
+        double mediumTimeSpent = mediumMowingRate * mowingSpeed;
+        System.out.println(mediumTimeSpent + " hours");
 
 
         // 31. How much money does Elliot earn per hour
