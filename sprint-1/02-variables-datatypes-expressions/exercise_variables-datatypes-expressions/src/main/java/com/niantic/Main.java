@@ -1,7 +1,5 @@
 package com.niantic;
 
-import java.math.BigInteger;
-
 public class Main
 {
     public static void main(String[] args)
@@ -521,18 +519,24 @@ public class Main
         // he mows a yard that is 100 x 50 feet?
         System.out.println("28. What is the total cost to Elliot when he mows a 100 x 50 feet lawn?");
 
-        int lawnSize = 100 * 50;
-        double mowingExpense = 2.5;
+        int mediumLawnSize = 100 * 50;
+        double mediumMowingExpense = 2.5;
         int mowingSqFt = 1000;
 
-        double lawnExpense = ( (double) lawnSize / mowingSqFt) * mowingExpense;
-        System.out.println("It costs Elliot " + lawnExpense + " to mow a 100 x 50 feet lawn.");
+        double mediumLawnExpense = ( (double) mediumLawnSize / mowingSqFt) * mediumMowingExpense;
+        System.out.println("$" + mediumLawnExpense);
+        System.out.println();
 
 
         // 29. How much total money does Elliot earn
         // to maintain a 100 x 50 ft yard?
+        System.out.println("29. How much money does Elliot earn to maintain a 100 x 50 ft lawn?");
 
+        int mediumLawnCharge = 30;
+        double mediumLawnEarnings = mediumLawnCharge - mediumLawnExpense;
 
+        System.out.println("$" + mediumLawnEarnings);
+        System.out.println();
 
         // 30. How much time does it take Elliot to mow
         // a 100 x 50 ft yard?
