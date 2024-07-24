@@ -547,24 +547,38 @@ public class Main
 
         double mediumTimeSpent = mediumMowingRate * mowingSpeed;
         System.out.println(mediumTimeSpent + " hours");
+        System.out.println();
 
 
         // 31. How much money does Elliot earn per hour
         // on a 100 x 50 foot yard?
-        System.out.println("31. How much does Elliot earn per hour on a  100 x 50 ft lawn?");
+        System.out.println("31. How much does Elliot earn per hour on a 100 x 50 ft lawn?");
 
         double mediumHourlyEarnings = mediumLawnEarnings / mediumTimeSpent;
         System.out.println("$" + mediumHourlyEarnings);
+        System.out.println();
 
 
         // 32. What is Elliot's cost per hour on a medium
         // sized yard?
+        System.out.println("32. What is Elliot's cost per hour on a medium sized yard?");
 
+        double mediumHourlyCost = mediumLawnExpense / mediumTimeSpent;
+
+        System.out.println("$" + mediumHourlyCost);
+        System.out.println();
 
 
         // 33. How much money should Elliot charge for a medium yard
         // in order to earn $10 per hour?
+        System.out.println("33. How much money should Elliot charge for a medium yard in order to earn $10/hr?");
 
+        int goalHourlyWage = 10;
+        double goalMediumHourlyCharge = goalHourlyWage + mediumHourlyCost;   // Elliot's target hourly wage, accounting for hourly costs
+
+        double goalMediumCharge = goalMediumHourlyCharge * mediumTimeSpent;
+
+        System.out.println("$" + goalMediumCharge);
 
     }
 }
