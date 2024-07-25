@@ -65,7 +65,7 @@ public class Main
         boolean hasFrosting = false;
 
         double customOrder = orders.calculateCustomOrder(quantity, hasChocolateChips, hasFrosting);
-        System.out.println(customOrder);
+        System.out.println("Cost of customized cookies (including tax): " + customOrder);
     }
 
     private static void elliotsYardCare()
