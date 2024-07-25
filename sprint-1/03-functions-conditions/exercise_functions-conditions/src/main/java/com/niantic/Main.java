@@ -43,10 +43,10 @@ public class Main
 
         double TAX_RATE = 0.0575;
         double cookiePrice = 12.95;
-        //int quantity = 1;
+        int quantity = 1;
 
-       // double subtotal = orders.calculateSubtotal(quantity);
-        //System.out.println("Cookie price before tax: " + subtotal);
+        double subtotal = orders.calculateSubtotal(quantity);
+        System.out.println("Cookie price before tax: " + subtotal);
 
 
         //double orderCostAfterTax = orders.calculateTotal(quantity);
@@ -59,7 +59,7 @@ public class Main
         double quickOrder = orders.calculateQuickOrder(snickerDozen, chocolateDozen, frostedDozen);
         System.out.println("Popular orders (tax factored): $" + quickOrder);
 
-        int quantity = 5;
+        //int quantity = 5;
         boolean hasChocolateChips = true;
         boolean hasFrosting = false;
 

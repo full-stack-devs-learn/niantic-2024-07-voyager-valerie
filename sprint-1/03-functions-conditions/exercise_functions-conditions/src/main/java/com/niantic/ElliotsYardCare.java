@@ -2,6 +2,8 @@ package com.niantic;
 
 public class ElliotsYardCare
 {
+    private static double lawnCost;
+    private static double lawnConversion;
     /*
      * Elliot has gas and material costs to operate his business.
      *
@@ -19,9 +21,19 @@ public class ElliotsYardCare
      * calculateCost(100, 50, true) -> 15.00
      * calculateCost(75, 75, false) -> 16.88
      */
-    public double  calculateCost(int width, int length, boolean  isTrimming)
+
+    public static double calculateCost(int width, int length, boolean isTrimming)
     {
-        return 0;
+        int lawnSize = width * length;
+        lawnConversion = (double) lawnSize / 1000;    // his pricing is based on every 1000 ft
+
+        if (isTrimming) {
+            lawnCost = lawnConversion * 3.0;
+        } else {
+            lawnCost = lawnConversion * 2.5;
+        }
+
+        return lawnCost;
     }
 
     /*
@@ -39,9 +51,13 @@ public class ElliotsYardCare
      * calculateProfit(75, 75, true, 50) -> 33.12
      * calculateProfit(150, 100, true, 75) -> 30
      */
-    public double  calculateProfit(int width, int length, boolean  isTrimming, int amountCharged)
+
+
+    public static double  calculateProfit(int width, int length, boolean isTrimming, int amountCharged)
     {
-        return 0;
+
+        double cost = calculateCost(width, length, isTrimming);
+        return amountCharged - cost;
     }
 
     /*
@@ -62,7 +78,20 @@ public class ElliotsYardCare
      */
     public double calculateTime(int width, int length, boolean  isTrimming)
     {
-        return 0;
+        double mowRate = 0.5;      // how long it takes him to mow 1000 ft in hrs
+        double trimRate = 0.75;    // how long it takes him to mow + trim 1000 ft in hrs
+
+        double timeSpent;
+
+        double lawnConversion = width * length / 1000.0;   // defined this elsewhere but couldn't be recognized as a class variable
+
+        if (isTrimming) {
+            timeSpent = lawnConversion * trimRate;
+        } else {
+            timeSpent = lawnConversion * mowRate;
+        }
+
+        return timeSpent;
     }
 
     /*
