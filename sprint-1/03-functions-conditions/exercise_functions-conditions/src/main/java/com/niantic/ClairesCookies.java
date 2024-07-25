@@ -1,16 +1,10 @@
 package com.niantic;
 
-import java.util.Scanner;
-
 public class ClairesCookies
 {
     @SuppressWarnings("unused") 
     private final double TAX_RATE = .0575;
-    private Scanner userInput;
 
-    public ClairesCookies() {
-        userInput = new Scanner(System.in);
-    }
     /*
      * Claire's cookies cost $12.95 a dozen.
      *
@@ -96,7 +90,9 @@ public class ClairesCookies
         double chocolateChipCost = 13.95;
         double frostedChocolateChip = 15.95;
 
-        double cookiesBeforeTax = (snickerDoodleCost * snickerDozen) + (chocolateChipCost * chocolateDozen) + (frostedChocolateChip * frostedDozen);
+        double cookiesBeforeTax = (snickerDoodleCost * snickerDozen) +
+                                  (chocolateChipCost * chocolateDozen) +
+                                  (frostedChocolateChip * frostedDozen);
         double cookiesAfterTax;
         cookiesAfterTax = cookiesBeforeTax * TAX_RATE;
 
@@ -132,7 +128,7 @@ public class ClairesCookies
         double chocolateChips = 1.0;
         double frosting = 2.0;
 
-        double cookieCost = 12.95 * quantity;
+        double cookieCost = cookiePrice * quantity;
 
         if (hasChocolateChips) {
             cookieCost += quantity * chocolateChips;
