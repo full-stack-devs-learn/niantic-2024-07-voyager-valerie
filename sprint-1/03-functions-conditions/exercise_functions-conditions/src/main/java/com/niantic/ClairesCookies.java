@@ -2,7 +2,6 @@ package com.niantic;
 
 public class ClairesCookies
 {
-    @SuppressWarnings("unused") 
     private final double TAX_RATE = .0575;
 
     /*
@@ -52,7 +51,7 @@ public class ClairesCookies
         double subtotal = cookiePrice * quantity;
 
         double orderCostAfterTax;
-        orderCostAfterTax = subtotal * TAX_RATE;
+        orderCostAfterTax = (subtotal * TAX_RATE) + subtotal;
 
         return orderCostAfterTax;
     }
@@ -94,7 +93,7 @@ public class ClairesCookies
                                   (chocolateChipCost * chocolateDozen) +
                                   (frostedChocolateChip * frostedDozen);
         double cookiesAfterTax;
-        cookiesAfterTax = cookiesBeforeTax * TAX_RATE;
+        cookiesAfterTax = (cookiesBeforeTax * TAX_RATE) + cookiesBeforeTax;
 
         return cookiesAfterTax;
     }
@@ -128,7 +127,7 @@ public class ClairesCookies
         double chocolateChips = 1.0;
         double frosting = 2.0;
 
-        double cookieCost = cookiePrice * quantity;
+        double cookieCost = (cookiePrice * quantity);
 
         if (hasChocolateChips) {
             cookieCost += quantity * chocolateChips;
@@ -138,7 +137,9 @@ public class ClairesCookies
             cookieCost += quantity * frosting;
         }
 
-        return cookieCost;
+        double totalCostAfterTax = cookieCost * (1 + TAX_RATE);
+
+        return totalCostAfterTax;
     }
 
 
