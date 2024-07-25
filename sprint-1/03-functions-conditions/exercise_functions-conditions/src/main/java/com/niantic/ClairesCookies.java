@@ -1,10 +1,16 @@
 package com.niantic;
 
+import java.util.Scanner;
+
 public class ClairesCookies
 {
     @SuppressWarnings("unused") 
-    private final double TaxRate = .0575;
+    private final double TAX_RATE = .0575;
+    private Scanner userInput;
 
+    public ClairesCookies() {
+        userInput = new Scanner(System.in);
+    }
     /*
      * Claire's cookies cost $12.95 a dozen.
      *
@@ -21,7 +27,12 @@ public class ClairesCookies
      */
     public double calculateSubtotal(int quantity)
     {
-        return 0;
+        double cookiePrice = 12.95;
+        double subtotal;
+        subtotal = cookiePrice * quantity;
+
+        return subtotal;
+
     }
 
     /*
@@ -34,7 +45,7 @@ public class ClairesCookies
      * of how many dozen cookies they want to order.
      *
      * The calculateTotal function should calculate
-     * the price of an order BEFORE the cost of tax
+     * the price of an order AFTER the cost of tax
      * is added.
      *
      * calculateTotal(1) -> 13.69
@@ -43,7 +54,13 @@ public class ClairesCookies
      */
     public double calculateTotal(int quantity)
     {
-        return 0;
+        double cookiePrice = 12.95;
+        double subtotal = cookiePrice * quantity;
+
+        double orderCostAfterTax;
+        orderCostAfterTax = subtotal * TAX_RATE;
+
+        return orderCostAfterTax;
     }
 
     /*
@@ -75,7 +92,15 @@ public class ClairesCookies
      */
     public double calculateQuickOrder(int snickerDozen, int chocolateDozen, int frostedDozen)
     {
-        return 0;
+        double snickerDoodleCost = 12.95;
+        double chocolateChipCost = 13.95;
+        double frostedChocolateChip = 15.95;
+
+        double cookiesBeforeTax = (snickerDoodleCost * snickerDozen) + (chocolateChipCost * chocolateDozen) + (frostedChocolateChip * frostedDozen);
+        double cookiesAfterTax;
+        cookiesAfterTax = cookiesBeforeTax * TAX_RATE;
+
+        return cookiesAfterTax;
     }
 
 
@@ -103,7 +128,22 @@ public class ClairesCookies
      */
     public double calculateCustomOrder (int quantity, boolean hasChocolateChips, boolean hasFrosting)
     {
-        return 0;
+        double cookiePrice = 12.95;
+        double chocolateChips = 1.0;
+        double frosting = 2.0;
+
+        double cookieCost = 12.95 * quantity;
+
+        if (hasChocolateChips) {
+            cookieCost += quantity * chocolateChips;
+
+        }
+        if (hasFrosting) {
+            cookieCost += quantity * frosting;
+        }
+
+        return cookieCost;
     }
+
 
 }

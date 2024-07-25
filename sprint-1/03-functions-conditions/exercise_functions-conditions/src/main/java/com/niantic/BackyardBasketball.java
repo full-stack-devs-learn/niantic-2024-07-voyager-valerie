@@ -2,10 +2,8 @@ package com.niantic;
 
 import java.util.Scanner;
 
-public class BackyardBasketball
-{
-    public static void main(String[] args)
-    {
+public class BackyardBasketball {
+    public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
 
         // variables for winning percentage
@@ -22,7 +20,6 @@ public class BackyardBasketball
         userInput.nextLine();
 
         // calculate winning percentage based on user input
-
         int percentage = calculateWinningPercentage(gamesWon, gamesLost);
         System.out.println("Winning Percentage: " + percentage + "%");
 
@@ -45,19 +42,19 @@ public class BackyardBasketball
         int points = calculatePointsScored(shotPercentage, shotsTaken, isThree);
         System.out.println("Points scored: " + points);
 
-
         // variables for calculateShotsRequired
-        int desiredScore;   // only one bc reuse from the other function
+        int desiredScore;
 
         System.out.println("Desired score:");
         desiredScore = userInput.nextInt();
         userInput.nextLine();
 
-        int shotsRequired = calculateShotsRequired(shotPercentage, desiredScore,isThree);
+        int shotsRequired = calculateShotsRequired(shotPercentage, desiredScore, isThree);
         System.out.println("Shots required: " + shotsRequired);
 
-        userInput.close();
+        userInput.close(); // Close the Scanner object after use
     }
+
     /*
      * Teams that play in the backyard league want to be able
      * to calculate their winning percentage.
@@ -73,18 +70,11 @@ public class BackyardBasketball
      * If a team has won 7 games and lost 3 games their winning
      * percentage is 70%.
      *
-     * calculateWinningPercentage(7, 3) -> 70
-     * calculateWinningPercentage(5, 5) -> 50
-     * calculateWinningPercentage(5, 10) -> 33
-     *
      */
-    public static int calculateWinningPercentage(int gamesWon, int gamesLost)
-    {
+    public static int calculateWinningPercentage(int gamesWon, int gamesLost) {
         double winningPercentage = ((double) gamesWon / (gamesWon + gamesLost)) * 100;    // for percentage
-
         return (int) Math.round(winningPercentage);
     }
-
 
     /*
      * The calculatePointsScored function should calculate
@@ -99,20 +89,17 @@ public class BackyardBasketball
      * calculatePointsScored(67, 15, false) -> 20
      *
      */
-    public static int calculatePointsScored(int shotPercentage, int shotsTaken, boolean isThree)
-    {
+    public static int calculatePointsScored(int shotPercentage, int shotsTaken, boolean isThree) {
         int points;
 
         if (isThree) {
-            points = (int) (shotPercentage / 100) * shotsTaken * 3;
-
+            points = (int) (shotPercentage / 100.0 * shotsTaken * 3);
         } else {
-            points = (shotPercentage / 100) * shotsTaken * 2;
+            points = (int) (shotPercentage / 100.0 * shotsTaken * 2);
         }
 
         return points;
     }
-
 
     /*
      * Calculate the minimum number of shots that are required
@@ -131,11 +118,10 @@ public class BackyardBasketball
      * calculateShotsRequired(50, 10, true) -> 8
      * calculateShotsRequired(75, 15, true) -> 7
      * calculateShotsRequired(80, 18, true) -> 8
-     * calculateShotsRequired(67, 24, false) -> 18     *
+     * calculateShotsRequired(67, 24, false) -> 18
      *
      */
-    public static int calculateShotsRequired(int shotPercentage, int desiredScore, boolean isThree)
-    {
+    public static int calculateShotsRequired(int shotPercentage, int desiredScore, boolean isThree) {
         int pointsPerShot;
 
         if (isThree) {
@@ -153,5 +139,4 @@ public class BackyardBasketball
 
         return shotsRequired;
     }
-
 }
