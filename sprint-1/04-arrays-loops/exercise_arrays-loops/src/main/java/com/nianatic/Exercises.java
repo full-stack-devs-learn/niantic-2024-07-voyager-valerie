@@ -11,8 +11,11 @@ public class Exercises
      */
     public String[] daysOfTheWeek()
     {
-        return null;
+        String[] daysOfTheWeek = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        return daysOfTheWeek;
+
     }
+
 
     /*
      * 2)
@@ -23,7 +26,10 @@ public class Exercises
      */
     public String[] monthsOfTheYear()
     {
-        return null;
+        String[] monthsOfTheYear = {
+                "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+        };
+        return monthsOfTheYear;
     }
 
     /*
@@ -38,7 +44,12 @@ public class Exercises
      */
     public int[] oneToFifty()
     {
-        return null;
+        int[] numbers = new int[50];
+        for(int i = 0; i < 50; i++) {
+            numbers[i] = i + 1;
+        }
+
+        return numbers;
     }
 
     /*
@@ -51,9 +62,18 @@ public class Exercises
      *
      * [2, 4, 6, ... 200]
      */
-    public int[] evenNumbers()
-    {
-        return null;
+    public int[] evenNumbers() {
+        int[] evens = new int[100];
+        int index = 0;
+
+        for (int i = 1; i <= 200; i++) {
+            if (i % 2 == 0) {
+                evens[index] = i;
+                index++;
+            }
+
+        }
+        return evens;
     }
 
     /*
@@ -75,7 +95,8 @@ public class Exercises
      */
     public String firstDayOfWeek(String[] daysOfTheWeek)
     {
-        return null;
+        String firstDay = daysOfTheWeek[0];
+        return firstDay;
     }
 
     /*
@@ -97,7 +118,7 @@ public class Exercises
      */
     public String lastDayOfWeek(String[] daysOfTheWeek)
     {
-        return null;
+        return daysOfTheWeek[daysOfTheWeek.length-1];
     }
 
     /*
@@ -138,6 +159,11 @@ public class Exercises
      */
     public boolean hasName(String[] names, String nameToFind)
     {
+        //for(name : names)
+        //{
+        //    .ignorecase
+        //}
+
         return false;
     }
 
@@ -235,7 +261,7 @@ public class Exercises
     /*
      * 15)
      * Given an array of prices, return the
-     * lowest price that is greater than 0.
+     * lowest price.
      *
      * lowestPrice([-15.25, 15.25, 2.34, 3.50])                        =>  2.34
      * lowestPrice([12.75, -5.5, 10.25, 18.44, 4.23, -15.55, 9.20])    =>  -15.55
