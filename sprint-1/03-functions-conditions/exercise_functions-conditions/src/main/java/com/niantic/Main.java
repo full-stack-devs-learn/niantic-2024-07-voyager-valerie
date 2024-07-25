@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Main
 {
-    private static Scanner userInput = new Scanner(System.in);
 
     public static void main(String[] args)
     {
@@ -58,14 +57,14 @@ public class Main
         int frostedDozen = 1;
 
         double quickOrder = orders.calculateQuickOrder(snickerDozen, chocolateDozen, frostedDozen);
-        System.out.println("Popular orders (tax factored): " + quickOrder);
+        System.out.println("Popular orders (tax factored): $" + quickOrder);
 
         int quantity = 5;
         boolean hasChocolateChips = true;
         boolean hasFrosting = false;
 
         double customOrder = orders.calculateCustomOrder(quantity, hasChocolateChips, hasFrosting);
-        System.out.println("Cost of customized cookies (including tax): " + customOrder);
+        System.out.println("Cost of customized cookies (including tax): $" + customOrder);
     }
 
     private static void elliotsYardCare()
