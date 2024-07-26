@@ -255,10 +255,8 @@ public class Exercises
     {
         int sumOfThirds = 0;
 
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] % 3 == 0) {
-                sumOfThirds += numbers[i];
-            }
+        for (int i = 0; i < numbers.length; i += 3) {
+            sumOfThirds += numbers[i];
         }
         return sumOfThirds;
     }
@@ -273,7 +271,14 @@ public class Exercises
      */
     public double averagePrice(double[] prices)
     {
-        return -1;
+        int count = 0;
+        double sumOfPrice = 0;
+
+        for (double price : prices) {
+            count += 1;
+            sumOfPrice += price;
+        }
+        return sumOfPrice / count;
     }
 
     /*
@@ -284,11 +289,16 @@ public class Exercises
      * highestPrice([12.75, 10.25, 8.44, 9.2])   =>  12.75
      * highestPrice([15.25, 21.34, 3.5])         =>  21.34
      */
-    public double highestValue(double[] prices)
-    {
-        return -1;
-    }
+    public double highestValue(double[] prices) {
+        double largest = prices[0];    // start at the beginning of the array
 
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > largest) {
+                largest = prices[i];
+            }
+        }
+        return largest;
+    }
     /*
      * 15)
      * Given an array of prices, return the
@@ -299,7 +309,14 @@ public class Exercises
      */
     public double lowestValue(double[] prices)
     {
-        return -1;
+        double lowest = prices[0];
+
+        for (int i = 1; i < prices.length; i++) {
+            if(lowest > prices[i]) {
+                lowest = prices[i];
+            }
+        }
+        return lowest;
     }
 
 }
