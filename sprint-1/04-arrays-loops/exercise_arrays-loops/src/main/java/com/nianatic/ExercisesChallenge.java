@@ -19,7 +19,15 @@ public class ExercisesChallenge
      */
     public int sumFirst2Numbers(int[] numbers)
     {
-        return -1;
+        int i = 0;    /// index
+
+        if (numbers.length == 1){
+            return numbers[0];
+        }
+        if (numbers.length == 0) {
+            return 0;
+    }
+        return numbers[i] + numbers[i + 1];
     }
 
     /*
@@ -32,6 +40,7 @@ public class ExercisesChallenge
      */
     public String[] reverseNames(String[] names)
     {
+
         return null;
     }
 
