@@ -137,7 +137,11 @@ public class Exercises
      */
     public String monthName(String[] months, int monthNumber)
     {
-        return null;
+        if(monthNumber >= 1 && monthNumber <= 12) {
+            return months[monthNumber - 1];
+        } else {
+            return "Invalid month";
+        }
     }
 
     /*
@@ -159,11 +163,11 @@ public class Exercises
      */
     public boolean hasName(String[] names, String nameToFind)
     {
-        //for(name : names)
-        //{
-        //    .ignorecase
-        //}
-
+        for (String name : names) {
+            if (name.equalsIgnoreCase(nameToFind)) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -185,7 +189,14 @@ public class Exercises
      */
     public int countName(String[] names, String nameToFind)
     {
-        return -1;
+        int count = 0;
+
+        for (String name : names) {
+            if(name.equalsIgnoreCase(nameToFind)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /*
@@ -199,8 +210,14 @@ public class Exercises
      */
     public int sumNumbers(int[] numbers)
     {
-        return -1;
+        int sumOfNums = 0;
+
+        for (int number : numbers) {
+            sumOfNums +=number;
+        }
+        return sumOfNums;
     }
+
 
     /*
      * 11)
@@ -214,7 +231,14 @@ public class Exercises
      */
     public int doubleEvens(int[] numbers)
     {
-        return -1;
+        int evens = 0;
+
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % 2 == 0) {
+                evens += numbers[i];
+            }
+        }
+        return evens * 2;
     }
 
     /*
@@ -229,7 +253,14 @@ public class Exercises
      */
     public int sumEveryThird(int[] numbers)
     {
-        return -1;
+        int sumOfThirds = 0;
+
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % 3 == 0) {
+                sumOfThirds += numbers[i];
+            }
+        }
+        return sumOfThirds;
     }
 
     /*
