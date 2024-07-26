@@ -40,8 +40,14 @@ public class ExercisesChallenge
      */
     public String[] reverseNames(String[] names)
     {
+        String[] reversed = new String[names.length];
 
-        return null;
+        int index = 0;
+        for (int i = names.length - 1; i >= 0; i--) {
+            reversed[index] = names[i];
+            index++;
+        }
+        return reversed;
     }
 
 
