@@ -18,7 +18,13 @@ public class Exercises
      */
     public String changeCase(String word, boolean toUpperCase)
     {
-        return null;
+        if(toUpperCase)
+        {
+            return word.toUpperCase();
+        } else
+        {
+            return word.toLowerCase();
+        }
     }
 
     /*
@@ -49,7 +55,19 @@ public class Exercises
      */
     public String createHtml(String content, String elementName)
     {
-        return null;
+        if (elementName.equals("p"))
+        {
+            return "<p>" + content + "</p>";
+        } else if (elementName.equals("strong"))
+        {
+            return "<strong>" + content + "</strong>";
+        } else if(elementName.equals("quote"))
+        {
+            return "<quote>" + content + "</quote>";
+        } else
+        {
+            return "<em>" + content + "</em>";
+        }
     }
 
     /*
@@ -71,7 +89,13 @@ public class Exercises
      */
     public String moreHtml(String content, String elementName)
     {
-        return null;
+        if (content.isEmpty())
+        {
+            return "<" + elementName + " />";
+        } else
+        {
+            return "<" + elementName + ">" + content + "</" + elementName +">";
+        }
     }
 
     /*
@@ -94,7 +118,7 @@ public class Exercises
      */
     public String createXml(int id, String name)
     {
-        return  null;
+        return "<customer><id>" + id + "</id><name>" + name + "</name></customer>";
     }
 
     /*
@@ -131,7 +155,10 @@ public class Exercises
      */
     public String formattedXml(int id, String name)
     {
-        return null;
+        return "<customer>\n" +
+                "  <id>" + id + "</id>\n" +
+                "  <name>" + name + "</name>\n" +
+                "</customer>";
     }
 
     /*
@@ -155,7 +182,25 @@ public class Exercises
      */
     public String formatFullName(String firstName, String middleName, String lastName, String suffix)
     {
-        return  null;
+        if (middleName.isEmpty() && suffix.isEmpty())    // no middle name or suffix
+        {
+            return firstName + " " + lastName;
+        } else if (suffix.isEmpty())                     // no suffix
+        {
+            return firstName + " " +
+                    middleName + " " +
+                    lastName;
+        } else if (middleName.isEmpty())                 // no middle name
+        {
+            return firstName +
+                    " " + lastName +
+                    ", " + suffix;
+        } else                                           // has all name fields
+        {
+            return firstName + " " +
+                    middleName + " " +
+                    lastName + ", " + suffix;
+        }
     }
 
     /*
@@ -167,7 +212,7 @@ public class Exercises
      * is formatted as the employees first name
      * and last name separated by a period.
      *
-     * Glen Williamson => glen.willimason
+     * Glen Williamson => glen.williamson
      *
      * If the employee has a middle name, the
      * middle initial should also be added like
@@ -186,6 +231,18 @@ public class Exercises
      */
     public String createUserName(String fullName)
     {
-        return null;
+        // exclude suffix, bc it's not accounted for in the username anyway
+        String[] nameParts = fullName.split(",")[0].split(" ");
+
+        if (nameParts.length > 2)
+        {
+            return nameParts[0].toLowerCase() +
+                    "." + nameParts[1].substring(0,1).toLowerCase() +
+                    "." +nameParts[2].toLowerCase();
+        } else
+        {
+            return nameParts[0].toLowerCase() +
+                    "." + nameParts[1].toLowerCase();
+        }
     }
 }

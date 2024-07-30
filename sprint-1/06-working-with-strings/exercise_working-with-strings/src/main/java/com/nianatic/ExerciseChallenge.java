@@ -26,7 +26,23 @@ public class ExerciseChallenge
      */
     public String reformatName(String fullName)
     {
-        return null;
+        String [] parts = fullName.split(",");
+        String [] nameParts = parts[0].split(" ");
+
+
+        if (nameParts.length > 3)             // if person has all name fields, including a title
+        {
+            fullName = nameParts[1] + ", " + nameParts[0] + ", " + nameParts[2] + ", " + nameParts[3];
+
+        } else if (nameParts.length > 2)      // first middle last name OR first last suffix (w/o ",")
+        {
+            fullName = nameParts[1] + ", " + nameParts[0] + ", " + nameParts[2];
+
+        } else                                // first and last name
+        {
+            fullName = nameParts[1] + ", " + nameParts[0];
+        }
+        return fullName;
     }
 
     /*
@@ -50,7 +66,7 @@ public class ExerciseChallenge
      */
     public String createJSON(int id, String name)
     {
-        return  null;
+        return "{ \"id\": " + id + ", \"name\": \"" + name + "\" }";
     }
 
 }
