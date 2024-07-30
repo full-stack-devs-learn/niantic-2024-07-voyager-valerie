@@ -26,7 +26,8 @@ public class ExerciseChallenge
      */
     public String reformatName(String fullName)
     {
-        String [] parts = fullName.split(",");
+        String strippedFullName = fullName.strip();
+        String [] parts = strippedFullName.split(",");
         String [] nameParts = parts[0].split(" ");
 
 

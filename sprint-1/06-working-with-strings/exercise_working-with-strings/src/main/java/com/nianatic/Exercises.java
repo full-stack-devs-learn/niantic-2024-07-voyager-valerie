@@ -231,18 +231,30 @@ public class Exercises
      */
     public String createUserName(String fullName)
     {
-        // exclude suffix, bc it's not accounted for in the username anyway
-        String[] nameParts = fullName.split(",")[0].split(" ");
 
-        if (nameParts.length > 2)
+        String lowerCaseFullName = fullName.strip().toLowerCase();
+
+        // exclude suffix, bc it's not accounted for in the username anyway
+        String[] nameParts = lowerCaseFullName.split(",");
+        String nameOnly = nameParts[0];
+
+        String[] names = nameOnly.split(" ");
+
+        String firstName = names[0];
+        String middleName = "";
+        String lastName = "";
+
+        if (names.length > 2)      // there's a middle name
         {
-            return nameParts[0].toLowerCase() +
-                    "." + nameParts[1].substring(0,1).toLowerCase() +
-                    "." +nameParts[2].toLowerCase();
-        } else
+            middleName = names[1].substring(0,1);
+            lastName = names[2];
+
+            return firstName + "." + middleName + "." + lastName;
+        } else                     // no middle name
         {
-            return nameParts[0].toLowerCase() +
-                    "." + nameParts[1].toLowerCase();
+            lastName = names[1];
+
+            return firstName + "." + lastName;
         }
     }
 }
