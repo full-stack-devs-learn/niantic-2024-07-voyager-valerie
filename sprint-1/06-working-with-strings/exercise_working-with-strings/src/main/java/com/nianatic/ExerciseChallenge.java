@@ -26,22 +26,34 @@ public class ExerciseChallenge
      */
     public String reformatName(String fullName)
     {
-        String strippedFullName = fullName.strip();
+        String strippedFullName = fullName.strip();         // remove whitespace
+
         String [] parts = strippedFullName.split(",");
-        String [] nameParts = parts[0].split(" ");
+        String nameParts = parts[0];
 
+        String[] names = nameParts.split(" ");
 
-        if (nameParts.length > 3)             // if person has all name fields, including a title
+        String firstName = names[0];
+        String lastName = names[1];
+        String title = "";
+        String suffix = "";
+
+        if (names.length > 3)             // if person has all name fields, including a title
         {
-            fullName = nameParts[1] + ", " + nameParts[0] + ", " + nameParts[2] + ", " + nameParts[3];
+            suffix = names[2];
+            title = names[3];
 
-        } else if (nameParts.length > 2)      // first middle last name OR first last suffix (w/o ",")
+            fullName =  lastName + ", " + firstName + ", " + suffix + ", " + title;
+
+        } else if (names.length > 2)      // first last title OR first last suffix
         {
-            fullName = nameParts[1] + ", " + nameParts[0] + ", " + nameParts[2];
+            String titleOrSuffix = names[2];
+            
+            fullName = lastName + ", " + firstName + ", " + titleOrSuffix;
 
         } else                                // first and last name
         {
-            fullName = nameParts[1] + ", " + nameParts[0];
+            fullName = lastName + ", " + firstName;
         }
         return fullName;
     }
