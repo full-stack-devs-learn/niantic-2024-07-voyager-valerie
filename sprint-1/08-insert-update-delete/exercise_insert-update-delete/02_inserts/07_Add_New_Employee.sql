@@ -11,3 +11,27 @@ USE northwind;
     -- home address
 -- leave all other fields null by default
 
+
+SELECT *
+FROM employees;
+
+INSERT INTO employees(
+	last_name, 
+	first_name, 
+    title, 
+    title_of_courtesy, 
+    birth_date, 
+    hire_date,
+	address,
+    notes
+    
+) VALUES (
+	'Kuan',
+    'Valerie',
+    'Bootcamper',
+    'Ms.',
+    '2001-07-09 00:00:00',
+    '2024-07-31 00:00:00',
+    '123 Main Street',
+    ''
+);

@@ -45,3 +45,5 @@ OrderDetails: (Create 5 line items)
     Discount: 0
 */
 
+SELECT *
+FROM customers;
