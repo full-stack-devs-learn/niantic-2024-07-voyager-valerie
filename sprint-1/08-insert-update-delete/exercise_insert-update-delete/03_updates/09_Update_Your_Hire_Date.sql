@@ -8,5 +8,5 @@ SELECT *
 FROM employees;
 
 UPDATE employees
-SET hire_date = '2024-07-15 00:00:00'
+SET hire_date = DATE_SUB(hire_date, INTERVAL 2 WEEK)
 WHERE employee_id = 10;

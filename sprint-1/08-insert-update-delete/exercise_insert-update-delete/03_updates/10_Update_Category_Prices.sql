@@ -6,10 +6,9 @@ USE northwind;
 
 
 
-SET @CategoryID = 7;
-SET @PercentIncrease = 10;
-
-SET @NewRate = 1 + (@PercentIncrease / 100.0);
+SET @CategoryID = 7
+	, @PercentIncrease = 10
+    , @NewRate = 1 + (@PercentIncrease / 100.0);
 
 UPDATE products
 SET unit_price = unit_price * @NewRate

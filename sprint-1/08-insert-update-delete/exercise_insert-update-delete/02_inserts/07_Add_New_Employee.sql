@@ -31,7 +31,7 @@ INSERT INTO employees(
     'Bootcamper',
     'Ms.',
     '2001-07-09 00:00:00',
-    '2024-07-31 00:00:00',
+    CURRENT_DATE,
     '123 Main Street',
     ''
 );

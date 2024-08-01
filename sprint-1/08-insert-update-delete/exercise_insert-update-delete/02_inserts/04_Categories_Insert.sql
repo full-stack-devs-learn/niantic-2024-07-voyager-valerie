@@ -11,10 +11,6 @@ SELECT *
 FROM categories;
 
 
--- note: i was testing if sporting goods were auto incrementing properly, 
--- and i ended up creating duplicates, so the indexes are a little off
-
-
 INSERT INTO categories(category_name, description)
 
 VALUES 
