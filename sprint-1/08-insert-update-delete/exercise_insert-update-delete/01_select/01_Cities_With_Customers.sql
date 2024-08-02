@@ -7,5 +7,5 @@ USE northwind;
 
 SELECT DISTINCT 
 	city,
-    region
+    country
 FROM customers;
