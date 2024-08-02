@@ -1,5 +1,5 @@
 
-	-- script to add additional expenses
+	-- script to add additional expenses, where user fills them in as the days go by
     SET @category_id = 40,
 		@category_name = 'Food',
         @person_id = 2,
@@ -45,9 +45,8 @@
         @person_id
     );
     
-	
     
-    -- all the expense categories and the expense distribution in a given month
+    -- monthly expense breakdown, where user controls the month to view
     
     -- May Breakdown
     SET @month := 5;
@@ -80,7 +79,7 @@
     GROUP BY category_order, category_name;
     
     
-    -- all expenses broken down in a category in a given month
+    -- all sub-category expenses broken down in a category in a given month
      
     SET @category_used := 'Housing',
 		@month := 5;
@@ -100,6 +99,7 @@
     FROM category
 		JOIN person ON category.person_id = person.person_id
     WHERE person_name = @purchaser AND month(date) = @month;
+    
     
     -- all transactions made by person of choice in a year
     SET @purchaser := 'John',
