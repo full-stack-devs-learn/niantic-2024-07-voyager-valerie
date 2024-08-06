@@ -8,7 +8,7 @@ public class MathTest
 
     public MathTest(int possiblePoints, String studentName)
     {
-        this.score = score;
+
     }
 
     public int getScore()
