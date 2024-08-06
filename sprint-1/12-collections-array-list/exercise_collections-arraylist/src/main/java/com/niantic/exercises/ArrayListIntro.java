@@ -1,5 +1,6 @@
 package com.niantic.exercises;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 public class ArrayListIntro
@@ -75,7 +76,16 @@ public class ArrayListIntro
      */
     public int max(ArrayList<Integer> numbers)
     {
-        return 0;
+        int max = 0;
+
+        for (int number : numbers)
+        {
+            if (number > max)
+            {
+                max = number;
+            }
+        }
+        return max;
     }
 
     /*
@@ -86,7 +96,16 @@ public class ArrayListIntro
      */
     public int min(ArrayList<Integer> numbers)
     {
-        return 0;
+        Integer min = null;
+
+        for (int number : numbers)
+        {
+            if (min == null || number < min)
+            {
+                min = number;
+            }
+        }
+        return min;
     }
 
     /*
@@ -98,7 +117,16 @@ public class ArrayListIntro
      */
     public int average(ArrayList<Integer> numbers)
     {
-        return 0;
+        int sum = 0;          // append the sum of all values
+        int count = 0;        // keep track of the total number of values inputted
+
+        for (int number : numbers)
+        {
+            sum += number;
+            count++;
+        }
+
+        return sum / count;
     }
 
     /*
@@ -117,6 +145,16 @@ public class ArrayListIntro
      */
     public ArrayList<Integer> buildFibonacci(int size)
     {
-        return null;
+        ArrayList<Integer> fibonacci = new ArrayList<>();
+
+        fibonacci.add(0);
+        fibonacci.add(1);
+
+        for (int i = 2; i < size; i++)
+        {
+            int nextValue = (fibonacci.get(fibonacci.size() - 1)) + fibonacci.get(fibonacci.size() - 2);
+            fibonacci.add(nextValue);
+        }
+        return fibonacci;
     }
 }
