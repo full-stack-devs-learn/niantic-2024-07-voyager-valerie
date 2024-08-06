@@ -3,12 +3,12 @@ package com.niantic.part_3_challenge;
 public class Refrigerator {
     private int currentTemperature;
     private int maxCapacity;
-    private int available;
+    private int availableCapacity;
     private boolean isDoorOpen;
 
     public Refrigerator(int currentTemperature, int maxCapacity) {
         this.currentTemperature = currentTemperature;
-        this.maxCapacity = maxCapacity;
+        this.availableCapacity = maxCapacity;
         this.isDoorOpen = false;    // by default, the door is closed
     }
 
@@ -20,8 +20,17 @@ public class Refrigerator {
         return maxCapacity;
     }
 
-    public int getAvailable() {
-        return available;
+    public int getAvailableCapacity() {
+        return availableCapacity;
+    }
+
+
+    public void fridgeTemp()
+    {
+        if (-1 > currentTemperature || currentTemperature >= 35)
+        {
+            System.out.println("Invalid fridge temperature. Please choose a number between 0 and 35.");
+        }
     }
 
     public boolean isDoorOpen() {
@@ -36,21 +45,39 @@ public class Refrigerator {
         isDoorOpen = false;
     }
 
-    public void addItem(int capacity) {
-        available = maxCapacity - capacity;
+    public boolean addItem(int capacity) {
         if (isDoorOpen) {
-            if (available >= capacity && available + capacity <= maxCapacity) {
-                available -= capacity; // Decrease available space by the item's capacity b/c there's less available space
+            if (capacity <= 0)
+            {
+                System.out.println(("Invalid item capacity."));
+                return false;
             }
-        } else
+            if (availableCapacity >= capacity) {
+                availableCapacity -= capacity; // Decrease available space by the item's capacity
+                return true;
+            }
+            else
+            {
+                System.out.println("Not enough space to add item.");
+                return false;
+            }
+        }
+        else
         {
-            System.out.println("You cannot add that item because the fridge does not have enough room.");
+            System.out.println("The door is closed. Please open the door before adding any items.");
+            return false;
         }
     }
 
     public void removeItem(int capacity) {
-        if (isDoorOpen) {
-                available += capacity; // Increase available space by the item's capacity b/c there's more available space
+        if (isDoorOpen)
+        {
+            availableCapacity += capacity; // Increase available space by the item's capacity
+        }
+        else
+        {
+            System.out.println("The door is closed. Please open the door before removing any items.");
+
         }
     }
 }
