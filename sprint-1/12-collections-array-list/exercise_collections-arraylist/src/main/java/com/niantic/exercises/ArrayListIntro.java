@@ -10,9 +10,21 @@ public class ArrayListIntro
 
     Return the list.
      */
+
+
+
+
     public ArrayList<String> getHeroesList()
     {
-        return null;
+        ArrayList <String> heroes = new ArrayList<>();
+
+        heroes.add("Spiderman");
+        heroes.add("Thor");
+        heroes.add("Black Widow");
+        heroes.add("Captain America");
+        heroes.add("Iron Man");
+
+        return heroes;
     }
 
     /*
@@ -24,7 +36,17 @@ public class ArrayListIntro
      */
     public ArrayList<Integer> findEvens(ArrayList<Integer> numbers)
     {
-        return null;
+        ArrayList<Integer> evens = new ArrayList<>();
+
+        for (int number : numbers)
+        {
+            if (number % 2 == 0)
+            {
+                evens.add(number);
+            }
+        }
+
+        return evens;
     }
 
     /*
@@ -35,7 +57,14 @@ public class ArrayListIntro
      */
     public int sum(ArrayList<Integer> numbers)
     {
-        return 0;
+
+        int sum = 0;
+
+        for (int number : numbers)
+        {
+            sum += number;
+        }
+        return sum;
     }
 
     /*

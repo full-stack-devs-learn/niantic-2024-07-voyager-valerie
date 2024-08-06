@@ -9,7 +9,7 @@ public class Refrigerator {
     public Refrigerator(int currentTemperature, int maxCapacity) {
         this.currentTemperature = currentTemperature;
         this.availableCapacity = maxCapacity;
-        this.isDoorOpen = false;    // by default, the door is closed
+        this.isDoorOpen = false;        // by default, the door is closed
     }
 
     public int getCurrentTemperature() {
@@ -53,7 +53,7 @@ public class Refrigerator {
                 return false;
             }
             if (availableCapacity >= capacity) {
-                availableCapacity -= capacity; // Decrease available space by the item's capacity
+                availableCapacity -= capacity;          // Decrease available space by the item's capacity
                 return true;
             }
             else
@@ -72,7 +72,7 @@ public class Refrigerator {
     public void removeItem(int capacity) {
         if (isDoorOpen)
         {
-            availableCapacity += capacity; // Increase available space by the item's capacity
+            availableCapacity += capacity;      // Increase available space by the item's capacity
         }
         else
         {
