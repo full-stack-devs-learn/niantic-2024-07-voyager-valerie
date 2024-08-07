@@ -63,9 +63,31 @@ public class CategoryDao
 
     Execute the query, then return a Category object from the results
      */
-    public Category getCategoryById(int categoryId)
+    public Category getCategoryById(int userId)
     {
-        return null;
+        Category category = new Category();
+
+        String sql = """
+                SELECT category_id
+                    , category_name
+                    , description
+                FROM categories
+                WHERE category_id = ?;
+        """;
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, userId);
+
+        while(row.next())
+        {
+            int categoryById = row.getInt("category_id");
+            String categoryName = row.getString("category_name");
+            String description = row.getString("description");
+
+            category.setCategoryId(categoryById);
+            category.setCategoryName(categoryName);
+            category.setDescription(description);
+        }
+        return category;
     }
 
     /*
@@ -75,6 +97,17 @@ public class CategoryDao
      */
     public void addCategory(Category category)
     {
+        String sql = """
+                INSERT INTO categories(category_id, category_name, description)
+                VALUES(?, ?, ?);
+        """;
+
+        jdbcTemplate.update(sql,
+                category.getCategoryId(),
+                category.getCategoryName(),
+                category.getDescription());
+
+
     }
 
     /*
@@ -84,6 +117,16 @@ public class CategoryDao
      */
     public void updateCategory(Category category)
     {
+        String sql = """
+                UPDATE categories
+                SET category_name = ?, description = ?
+                WHERE category_id = ?;
+                """;
+
+        jdbcTemplate.update(sql,
+                category.getCategoryName(),
+                category.getDescription(),
+                category.getCategoryId());
     }
 
     /*
@@ -92,6 +135,13 @@ public class CategoryDao
      */
     public void deleteCategory(int categoryId)
     {
+        Category category = new Category();
+
+        String sql = """
+                DELETE FROM categories
+                WHERE category_id = ?;
+                """;
+        jdbcTemplate.update(sql, category.getCategoryId());
     }
 
 

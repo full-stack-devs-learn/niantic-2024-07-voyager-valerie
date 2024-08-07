@@ -100,4 +100,5 @@ public class OrderLineItem
         OrderLineItem that = (OrderLineItem) o;
         return Objects.equals(product, that.product);
     }
+
 }

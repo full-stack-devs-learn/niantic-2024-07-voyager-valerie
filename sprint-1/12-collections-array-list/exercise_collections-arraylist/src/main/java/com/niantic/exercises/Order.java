@@ -26,13 +26,18 @@ public class Order
      */
     public void addItem(OrderLineItem newItem)
     {
+        OrderLineItem currentItem = null;
+
         for(OrderLineItem item : shoppingCart)
         {
             // if the item is already in the cart
-            if (item.getProduct().equals(newItem))
+            if (item.getProduct().equals(newItem.getProduct()))
             {
                 // find the quantity already in cart and add the additional amount
-                item.setQuantity(item.getQuantity() + newItem.getQuantity());
+                currentItem = item;
+                int newQuantity = item.getQuantity() + newItem.getQuantity();    // increment quantity, if item already in shopping cart
+                item.setQuantity(newQuantity);                                   // update the quantity
+                continue;
             }
         }
         // if the item doesn't already exist in the cart, add it to the shopping cart
@@ -127,6 +132,7 @@ public class Order
 
             sumOfOrder += itemCost;
         }
+
         return sumOfOrder;
     }
 
@@ -141,6 +147,7 @@ public class Order
         {
             itemCount += item.getQuantity();
         }
+
         return itemCount;
     }
 

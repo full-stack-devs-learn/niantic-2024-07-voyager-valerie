@@ -3,10 +3,13 @@ package com.niantic.services;
 import com.niantic.models.Product;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
 
+
+// challenge
 public class ProductDao
 {
     private final JdbcTemplate jdbcTemplate;
@@ -30,7 +33,33 @@ public class ProductDao
      */
     public ArrayList<Product> getProductsByCategory(int categoryId)
     {
-        return null;
+        ArrayList<Product> productList = new ArrayList<>();      // holds all product info
+
+        String sql = """
+                SELECT product_id
+                    , product_name
+                    , unit_price
+                FROM products
+                WHERE category_id = ?;
+        """;
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, categoryId);
+
+        while(row.next())
+        {
+            int productId = row.getInt("product_id");
+            String productName = row.getString("product_name");
+            double productPrice = row.getDouble("unit_price");
+
+            Product product = new Product();            // stores individual product info
+
+            product.setProductId(productId);
+            product.setProductName(productName);
+            product.setUnitPrice(productPrice);
+
+            productList.add(product);
+        }
+        return productList;
     }
 
     /*
@@ -38,7 +67,40 @@ public class ProductDao
      */
     public Product getProduct(int productId)
     {
-        return null;
+        Product product = new Product();
+
+        String sql = """
+        SELECT product_id
+            , product_name
+            , quantity_per_unit
+            , unit_price
+            , units_in_stock
+            , units_on_order
+            , reorder_level
+        FROM products
+        WHERE product_id = ?;
+    """;
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, productId);
+
+        while(row.next()) {
+            productId = row.getInt("product_id");
+            String productName = row.getString("product_name");
+            String quantityPerUnit = row.getString("quantity_per_unit");
+            double productPrice = row.getDouble("unit_price");
+            int inStock = row.getInt("units_in_stock");
+            int onOrder = row.getInt("units_on_order");
+            int reorderLevel = row.getInt("reorder_level");
+
+            product.setProductId(productId);
+            product.setProductName(productName);
+            product.setQuantityPerUnit(quantityPerUnit);
+            product.setUnitPrice(productPrice);
+            product.setUnitsInStock(inStock);
+            product.setUnitsOnOrder(onOrder);
+            product.setReorderLevel(reorderLevel);
+        }
+        return product;
     }
 
     /*
