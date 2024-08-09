@@ -4,26 +4,45 @@ import java.time.LocalDate;
 
 public class Transaction
 {
-    private double amount;
+    private int transactionId;
+    private int userId;
+    private int subCategoryId;
+    private int vendorId;
     private LocalDate date;
+    private double amount;
     private String memo;
-    private String username;
-    private String vendor;
-    private String subcategory;
 
-    public Transaction(double amount, LocalDate date, String memo, String username, String vendor, String subcategory)
+
+    public Transaction(int transactionId, int userId, int subCategoryId, int vendorId, double amount, LocalDate date, String memo)
     {
+        this.transactionId = transactionId;
+        this.userId = userId;
+        this.subCategoryId = subCategoryId;
+        this.vendorId = vendorId;
         this.amount = amount;
         this.date = date;
         this.memo = memo;
-        this.username = username;
-        this.vendor = vendor;
-        this.subcategory = subcategory;
     }
 
     public Transaction()
     {
     }
+
+    public int getTransactionId() {return transactionId;}
+
+    public void setTransactionId(int transactionId) {this.transactionId = transactionId;}
+
+    public int getUserId() {return userId;}
+
+    public void setUserId(int userId) {this.userId = userId;}
+
+    public int getSubCategoryId() {return subCategoryId;}
+
+    public void setSubCategoryId(int subCategoryId) {this.subCategoryId = subCategoryId;}
+
+    public int getVendorId() {return vendorId;}
+
+    public void setVendorId(int vendorId) {this.vendorId = vendorId;}
 
     public double getAmount()
     {
@@ -53,35 +72,5 @@ public class Transaction
     public void setMemo(String memo)
     {
         this.memo = memo;
-    }
-
-    public String getUsername()
-    {
-        return username;
-    }
-
-    public void setUsername(String username)
-    {
-        this.username = username;
-    }
-
-    public String getVendor()
-    {
-        return vendor;
-    }
-
-    public void setVendor(String vendor)
-    {
-        this.vendor = vendor;
-    }
-
-    public String getSubcategory()
-    {
-        return subcategory;
-    }
-
-    public void setSubcategory(String subcategory)
-    {
-        this.subcategory = subcategory;
     }
 }

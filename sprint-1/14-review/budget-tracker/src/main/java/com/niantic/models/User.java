@@ -2,14 +2,16 @@ package com.niantic.models;
 
 public class User
 {
+    private int userId;
     private String username;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String email;
 
-    public User(String username, String firstName, String lastName, String phoneNumber, String email)
+    public User(int userId, String username, String firstName, String lastName, String phoneNumber, String email)
     {
+        this.userId = userId;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -20,6 +22,10 @@ public class User
     public User()
     {
     }
+
+    public int getUserId() {return userId;}
+
+    public void setUserId(int userId) {this.userId = userId;}
 
     public String getUsername() {return username;}
 

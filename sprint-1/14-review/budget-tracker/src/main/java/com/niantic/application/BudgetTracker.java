@@ -1,15 +1,19 @@
 package com.niantic.application;
 
-import com.niantic.Category;
-import com.niantic.models.Transaction;
-import com.niantic.models.User;
+import com.niantic.models.*;
+
+import com.niantic.TransactionDao;
 
 import java.time.LocalDate;
 import java.util.Scanner;
 
+import static java.lang.StringTemplate.STR;
+
 public class BudgetTracker
 {
     Scanner userInput = new Scanner(System.in);
+
+    TransactionDao transactionDao = new TransactionDao();
 
     public void run()
     {
@@ -31,13 +35,12 @@ public class BudgetTracker
                case 4:
                     addCategory();
                     break;
-                    /*
                 case 5:
                     addSubcategory();
                     break;
                 case 6:
                     addVendor();
-                    break;*/
+                    break;
                 case 0:
                     System.out.println();
                     System.out.println("Thank you for using Northwind!");
@@ -82,27 +85,44 @@ public class BudgetTracker
         System.out.println("Enter Transaction Information");
         System.out.println();
 
-        double amount = getUserDouble("Enter transaction amount: ");
+        int transactionId = getUserInt("Enter transaction id: ");
+        int userId = getUserInt("Enter user id: ");
+        int subCategoryId = getUserInt("Enter sub category id: ");
+        int vendorId = getUserInt("Enter vendor id: ");
         LocalDate date = getUserDate("Enter transaction date: ");
+        double amount = getUserDouble("Enter transaction amount: ");
         String memo = getUserString("Enter transaction memo: ");
-        String username = getUserString("Enter username: ");
-        String vendor = getUserString("Enter vendor name: ");
-        String subcategory = getUserString("Enter subcategory: ");
+
 
         System.out.println();
 
         var transaction = new Transaction()
         {{
-            setAmount(amount);
+            setTransactionId(transactionId);
+            setUserId(userId);
+            setSubCategoryId(subCategoryId);
+            setVendorId(vendorId);
             setDate(date);
+            setAmount(amount);
             setMemo(memo);
-            setUsername(username);
-            setVendor(vendor);
-            setSubcategory(subcategory);
         }};
-    }
 
-    /*private void displayReport()
+        try
+        {
+            transactionDao.addTransaction(transaction);
+
+            System.out.println(STR."\{transactionId} has been added.");
+        }
+
+        catch (Exception e)
+        {
+            System.out.println(STR."There was a problem adding \{transactionId}.");
+        }
+
+        waitForUser();
+    }
+/*
+    private void displayReport()
     {
         while(true) {
             int options = reportSelection();
@@ -135,7 +155,7 @@ public class BudgetTracker
             }
         }
     }
-
+*/
     private int reportSelection()
     {
         System.out.println("--------------------------------------");
@@ -153,7 +173,7 @@ public class BudgetTracker
         return getUserInt("Enter your selection: ");
     }
 
-    private double userTransactions()
+    /*private double userTransactions()
     {
 
     }
@@ -181,11 +201,12 @@ public class BudgetTracker
     private void addUser()
     {
         System.out.println("--------------------------------------");
-        System.out.println("Add Transaction");
+        System.out.println("Add User");
         System.out.println("--------------------------------------");
         System.out.println("Enter User Information");
         System.out.println();
 
+        int userId = getUserInt("Enter user id: ");
         String username = getUserString("Enter user name: ");
         String firstName = getUserString("Enter first name: ");
         String lastName = getUserString("Enter last name: ");
@@ -196,6 +217,7 @@ public class BudgetTracker
 
         var user = new User()
         {{
+            setUserId(userId);
             setUsername(username);
             setFirstName(firstName);
             setLastName(lastName);
@@ -222,17 +244,48 @@ public class BudgetTracker
         }};
     }
 
-    /*
     private void addSubcategory()
     {
+        System.out.println("--------------------------------------");
+        System.out.println("Add Sub Category");
+        System.out.println("--------------------------------------");
+        System.out.println("Enter Sub Category Information");
+        System.out.println();
 
+        int subCategoryId = getUserInt("Enter sub category id: ");
+        int categoryId = getUserInt("Enter category id: ");
+        String subCategoryName = getUserString("Enter sub category name: ");
+        String subCategoryDescription = getUserString("Enter sub category description: ");
+
+        var subCategory = new Subcategory()
+        {{
+            setSubCategoryId(subCategoryId);
+            setCategoryId(categoryId);
+            setSubCategoryName(subCategoryName);
+            setSubCategoryDescription(subCategoryDescription);
+        }};
     }
 
     private void addVendor()
     {
+        System.out.println("--------------------------------------");
+        System.out.println("Add Vendor");
+        System.out.println("--------------------------------------");
+        System.out.println("Enter Vendor Information");
+        System.out.println();
 
+        int vendorId = getUserInt("Enter vendor id: ");
+        String vendorName = getUserString("Enter vendor name: ");
+        String website = getUserString("Enter website url: ");
+
+        var vendor = new Vendor()
+        {{
+            setVendorId(vendorId);
+            setVendorName(vendorName);
+            setWebsite(website);
+        }};
     }
-*/
+
     private void waitForUser()
     {
         System.out.println();

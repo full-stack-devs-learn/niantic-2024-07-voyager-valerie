@@ -15,7 +15,8 @@ public class TransactionDao
     {
         var transaction = new ArrayList<Transaction>();
 
-        String sql = "";
+        String sql = """
+                """;
 
         var row = jdbcTemplate.queryForRowSet(sql);
 
@@ -29,5 +30,56 @@ public class TransactionDao
             }
         }
         return transaction;
+    }
+
+    public void addTransaction(Transaction transaction)
+    {
+        String sql = """
+                INSERT INTO transactions(transaction_id
+                    , user_id
+                    , sub_category_id
+                    , vendor_id
+                     transaction_date
+                     , amount
+                     , notes)
+                VALUES(?, ?, ?, ?, ?, ?, ?);
+                """;
+
+        jdbcTemplate.update(sql,
+                transaction.getTransactionId(),
+                transaction.getUserId(),
+                transaction.getSubCategoryId(),
+                transaction.getVendorId(),
+                transaction.getDate(),
+                transaction.getAmount(),
+                transaction.getMemo());
+    }
+
+    public void updateTransaction(Transaction transaction)
+    {
+        String sql = """
+                UPDATE transaction
+                SET transaction_date = ?
+                    , amount = ?
+                    , notes = ?
+                WHERE transaction_id = ?
+                """;
+
+
+        jdbcTemplate.update(sql,
+                transaction.getDate(),
+                transaction.getAmount(),
+                transaction.getMemo(),
+                transaction.getTransactionId());
+    }
+
+    public void deleteTransaction(int transactionId)
+    {
+        String sql = """
+                DELETE FROM transaction
+                WHERE transaction_id = ?;
+                """;
+
+        jdbcTemplate.update(sql, transactionId);
     }
 }
