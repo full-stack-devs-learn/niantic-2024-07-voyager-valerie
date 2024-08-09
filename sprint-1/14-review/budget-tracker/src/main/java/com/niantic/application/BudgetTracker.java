@@ -1,10 +1,16 @@
 package com.niantic.application;
 
+import com.niantic.Category;
+import com.niantic.models.Transaction;
+import com.niantic.models.User;
+
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class BudgetTracker
 {
     Scanner userInput = new Scanner(System.in);
+
     public void run()
     {
 
@@ -14,23 +20,24 @@ public class BudgetTracker
             switch(choice)
             {
                 case 1:
-                    System.out.println("add transaction");
+                    addTransaction();
                     break;
-                case 2:
-                    System.out.println("reports");
-                    break;
+                //case 2:
+                //    reportSelection();
+                //    break;
                 case 3:
-                    System.out.println("add user");
+                    addUser();
                     break;
-                case 4:
-                    System.out.println("add category");
+               case 4:
+                    addCategory();
                     break;
+                    /*
                 case 5:
-                    System.out.println("add sub category");
+                    addSubcategory();
                     break;
                 case 6:
-                    System.out.println("add vendor");
-                    break;
+                    addVendor();
+                    break;*/
                 case 0:
                     System.out.println();
                     System.out.println("Thank you for using Northwind!");
@@ -50,6 +57,8 @@ public class BudgetTracker
         System.out.println();
         System.out.println("Budget Tracker");
         System.out.println("--------------------------------------");
+        System.out.println("Home");
+        System.out.println("--------------------------------------");
         System.out.println("Select from the following options:");
         System.out.println();
         System.out.println("  1) Add Transaction");
@@ -65,5 +74,190 @@ public class BudgetTracker
         return Integer.parseInt(userInput.nextLine());
     }
 
+    private void addTransaction()
+    {
+        System.out.println("--------------------------------------");
+        System.out.println("Add Transaction");
+        System.out.println("--------------------------------------");
+        System.out.println("Enter Transaction Information");
+        System.out.println();
 
+        double amount = getUserDouble("Enter transaction amount: ");
+        LocalDate date = getUserDate("Enter transaction date: ");
+        String memo = getUserString("Enter transaction memo: ");
+        String username = getUserString("Enter username: ");
+        String vendor = getUserString("Enter vendor name: ");
+        String subcategory = getUserString("Enter subcategory: ");
+
+        System.out.println();
+
+        var transaction = new Transaction()
+        {{
+            setAmount(amount);
+            setDate(date);
+            setMemo(memo);
+            setUsername(username);
+            setVendor(vendor);
+            setSubcategory(subcategory);
+        }};
+    }
+
+    /*private void displayReport()
+    {
+        while(true) {
+            int options = reportSelection();
+            switch (options)
+            {
+                case 1:
+                    userTransactions();
+                    break;
+
+                case 2:
+                    monthlyTransactions();
+                    break;
+
+                case 3:
+                    yearlyTransactions();
+                    break;
+
+                case 4:
+                    subcategoryTransactions();
+                    break;
+
+                case 5:
+                    categoryTransactions();
+                    break;
+
+                case 0:
+                    return;
+                default:
+                    System.out.println("Invalid selection. Please enter an integer included in the above options.");
+            }
+        }
+    }
+
+    private int reportSelection()
+    {
+        System.out.println("--------------------------------------");
+        System.out.println("Reports");
+        System.out.println("--------------------------------------");
+        System.out.println();
+        System.out.println(" 1) Transactions By User");
+        System.out.println(" 2) Transactions By Month");
+        System.out.println(" 3) Transactions By Year");
+        System.out.println(" 4) Transactions By Sub Category");
+        System.out.println(" 5) Transactions By Category");
+        System.out.println(" 0) Back");
+        System.out.println();
+
+        return getUserInt("Enter your selection: ");
+    }
+
+    private double userTransactions()
+    {
+
+    }
+
+    private double monthlyTransactions()
+    {
+
+    }
+
+    private double yearlyTransactions()
+    {
+
+    }
+
+    private double subcategoryTransactions()
+    {
+
+    }
+
+    private double categoryTransactions()
+    {
+
+    }
+*/
+    private void addUser()
+    {
+        System.out.println("--------------------------------------");
+        System.out.println("Add Transaction");
+        System.out.println("--------------------------------------");
+        System.out.println("Enter User Information");
+        System.out.println();
+
+        String username = getUserString("Enter user name: ");
+        String firstName = getUserString("Enter first name: ");
+        String lastName = getUserString("Enter last name: ");
+        String phoneNumber = getUserString("Enter phone number: ");
+        String email = getUserString("Enter email: ");
+
+        System.out.println();
+
+        var user = new User()
+        {{
+            setUsername(username);
+            setFirstName(firstName);
+            setLastName(lastName);
+            setPhoneNumber(phoneNumber);
+            setEmail(email);
+        }};
+    }
+
+    private void addCategory()
+    {
+        System.out.println("--------------------------------------");
+        System.out.println("Add Category");
+        System.out.println("--------------------------------------");
+        System.out.println("Enter Category Information");
+        System.out.println();
+
+        String categoryName = getUserString("Enter category name: ");
+        String categoryDescription = getUserString("Enter description: ");
+
+        var category =  new Category()
+        {{
+            setCategoryName();
+            setCategoryDescription();
+        }};
+    }
+
+    /*
+    private void addSubcategory()
+    {
+
+    }
+
+    private void addVendor()
+    {
+
+    }
+*/
+    private void waitForUser()
+    {
+        System.out.println();
+        System.out.println("Press ENTER to continue");
+        userInput.nextLine();
+    }
+
+    private String getUserString(String input)
+    {
+        System.out.println(input);
+        return userInput.nextLine();
+    }
+
+    private LocalDate getUserDate(String input)
+    {
+        return LocalDate.parse(getUserString(input));
+    }
+
+    private int getUserInt(String input)
+    {
+        return Integer.parseInt(getUserString(input));
+    }
+
+    private double getUserDouble(String input)
+    {
+        return Double.parseDouble(getUserString(input));
+    }
 }
