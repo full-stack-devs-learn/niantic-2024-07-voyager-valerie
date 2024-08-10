@@ -32,7 +32,7 @@ public class SubCategoryDao
             String description = row.getString("description");
 
             subcategory.setSubCategoryId(subCategoryId);
-            subcategory.setCategoryId(categoryId);
+            subcategory.setCategoryId(categorysId);
             subcategory.setSubCategoryName(subCategoryName);
             subcategory.setSubCategoryDescription(description);
 

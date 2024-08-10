@@ -1,6 +1,10 @@
 package com.niantic.application;
 
-import com.niantic.models.*;
+import com.niantic.models.Category;
+import com.niantic.models.Subcategory;
+import com.niantic.models.Transaction;
+import com.niantic.models.User;
+import com.niantic.models.Vendor;
 
 import com.niantic.CategoryDao;
 import com.niantic.SubCategoryDao;
@@ -37,7 +41,7 @@ public class BudgetTracker
                 case 3:
                     addUser();
                     break;
-               case 4:
+/*               case 4:
                     addCategory();
                     break;
                 case 5:
@@ -45,7 +49,7 @@ public class BudgetTracker
                     break;
                 case 6:
                     addVendor();
-                    break;
+                    break;*/
                 case 0:
                     System.out.println();
                     System.out.println("Thank you for using Northwind!");
@@ -117,6 +121,11 @@ public class BudgetTracker
             transactionDao.addTransaction(transaction);
 
             System.out.println(STR."\{transactionId} has been added.");
+
+            var transactions = transactionDao.getTransactionsBySubCategory(subCategoryId);
+
+            System.out.println("-".repeat(100));
+            transactions.forEach(System.out::println);
         }
 
         catch (Exception e)
@@ -127,7 +136,7 @@ public class BudgetTracker
         waitForUser();
     }
 
-    private void displayReport()
+/*    private void displayReport()
     {
         while(true) {
             int options = reportSelection();
@@ -159,7 +168,7 @@ public class BudgetTracker
                     System.out.println("Invalid selection. Please enter an integer included in the above options.");
             }
         }
-    }
+    }*/
 
     private int reportSelection()
     {
@@ -236,11 +245,15 @@ public class BudgetTracker
 
             System.out.println(STR."\{username} has been added.");
 
-            //var users = userDao.get
+            var users = userDao.getUserById(userId);
 
             System.out.println("-".repeat(100));
+            users.forEach(System.out::println);
 
         }
+        catch (Exception e)
+        {
+            System.out.println(STR."There was a problem adding \{username}.");
     }
 
     private void addCategory()
@@ -312,7 +325,6 @@ public class BudgetTracker
 
     private String getUserString(String input)
     {
-        System.out.println(input);
         return userInput.nextLine();
     }
 

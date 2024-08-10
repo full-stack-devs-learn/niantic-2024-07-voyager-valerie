@@ -17,7 +17,7 @@ public class VendorDao
                 SELECT vendor_id
                     , vendor_name
                     , website
-                FROM vendors
+                FROM vendors;
                 """;
 
         SqlRowSet row = jdbcTemplate.queryForRowSet(sql);
@@ -49,7 +49,7 @@ public class VendorDao
                     , vendor_name
                     , website
                 FROM vendors
-                WHERE vendor_id = ?
+                WHERE vendor_id = ?;
                 """;
 
         SqlRowSet row = jdbcTemplate.queryForRowSet(sql, vendorId);
@@ -74,7 +74,7 @@ public class VendorDao
                     , vendor_name
                     , website
                 FROM vendors
-                WHERE vendor_name = ?
+                WHERE vendor_name = ?;
                 """;
 
         SqlRowSet row = jdbcTemplate.queryForRowSet(sql, name);
@@ -96,7 +96,7 @@ public class VendorDao
                 INSERT INTO vendors(vendor_id
                     , vendor_name
                     , website
-                VALUES(?, ?, ?)
+                VALUES(?, ?, ?);
                 """;
 
         jdbcTemplate.update(sql,
