@@ -2,7 +2,11 @@ package com.niantic.application;
 
 import com.niantic.models.*;
 
+import com.niantic.CategoryDao;
+import com.niantic.SubCategoryDao;
 import com.niantic.TransactionDao;
+import com.niantic.UserDao;
+import com.niantic.VendorDao;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -14,6 +18,7 @@ public class BudgetTracker
     Scanner userInput = new Scanner(System.in);
 
     TransactionDao transactionDao = new TransactionDao();
+    UserDao userDao = new UserDao();
 
     public void run()
     {
@@ -26,9 +31,9 @@ public class BudgetTracker
                 case 1:
                     addTransaction();
                     break;
-                //case 2:
-                //    reportSelection();
-                //    break;
+                case 2:
+                    reportSelection();
+                    break;
                 case 3:
                     addUser();
                     break;
@@ -89,14 +94,14 @@ public class BudgetTracker
         int userId = getUserInt("Enter user id: ");
         int subCategoryId = getUserInt("Enter sub category id: ");
         int vendorId = getUserInt("Enter vendor id: ");
-        LocalDate date = getUserDate("Enter transaction date: ");
+        LocalDate date = getUserLocalDate("Enter transaction date: ");
         double amount = getUserDouble("Enter transaction amount: ");
         String memo = getUserString("Enter transaction memo: ");
 
 
         System.out.println();
 
-        var transaction = new Transaction()
+        Transaction transaction = new Transaction()
         {{
             setTransactionId(transactionId);
             setUserId(userId);
@@ -121,7 +126,7 @@ public class BudgetTracker
 
         waitForUser();
     }
-/*
+
     private void displayReport()
     {
         while(true) {
@@ -155,7 +160,7 @@ public class BudgetTracker
             }
         }
     }
-*/
+
     private int reportSelection()
     {
         System.out.println("--------------------------------------");
@@ -224,6 +229,18 @@ public class BudgetTracker
             setPhoneNumber(phoneNumber);
             setEmail(email);
         }};
+
+        try
+        {
+            userDao.addUser(user);
+
+            System.out.println(STR."\{username} has been added.");
+
+            //var users = userDao.get
+
+            System.out.println("-".repeat(100));
+
+        }
     }
 
     private void addCategory()
@@ -237,10 +254,10 @@ public class BudgetTracker
         String categoryName = getUserString("Enter category name: ");
         String categoryDescription = getUserString("Enter description: ");
 
-        var category =  new Category()
+        Category category =  new Category()
         {{
-            setCategoryName();
-            setCategoryDescription();
+            setCategoryName(categoryName);
+            setCategoryDescription(categoryDescription);
         }};
     }
 
@@ -299,7 +316,7 @@ public class BudgetTracker
         return userInput.nextLine();
     }
 
-    private LocalDate getUserDate(String input)
+    private LocalDate getUserLocalDate(String input)
     {
         return LocalDate.parse(getUserString(input));
     }
