@@ -1,92 +1,358 @@
 
-header 
-{
-    position: relative;
-}
-
 body {
     font-family: 'Futura', 'Helvetica', 'Arial', sans-serif;
     background-color: white;
+    margin: 0;
+    padding: 0;
 }
 
-#header-content
+#header-background
 {
-    justify-content: space-between;
+    background-color: #0B648F;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+/* Header styles */
+header {
+    margin: 0;
+    padding: 0;
 }
 
 #top-nav
 {
+    max-width: 1000px;
+/* Full-width background for header */
+#header-background {
     background-color: #0B648F;
+    width: 100%;
+    position: relative;
+}
+
+/* Centered content within header background */
+#header-content {
+    max-width: 1000px;
+    margin: 0 auto; /* Center horizontally */
+    padding: 12px; /* Add some padding to ensure spacing */
+}
+
+/* Navigation bar styles */
+#top-nav {
     color: white;
-    border: #f0f0f0;
-    padding: 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 8px; /* Adjust padding for height of the navbar */
 }
 
-img 
+#top-nav img
+{
+    height: 5px;
+    display: flex;
+    object-fit: contain;
+}
+
+nav button
+{
+    color:#0B648F;
+    background-color: white;
+    height: 25px;
+    width: 50px;
+    font-size: 15px;
+}
+
+nav p 
+{
+    color:#E21737;
+}
+
+#checkout
+{
+    display: flex;
+    object-fit: contain;
+    height: 10px;
+    width: auto;
+    font-size: 12px;
+}
+
+#header-content img 
 {
     background-color: #0B648F;
+/* Logo styling */
+#top-nav img {
     max-width: 120px;
     height: auto;
 }
 
-#top-nav ul
-{
-    display:flex;
+/* Navigation list styling */
+#top-nav ul {
+    display: flex;
     list-style-type: none;
-    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
-#top-nav li
-{
-    margin-right: 30px;
+#top-nav li {
+    margin-right: 20px; /* Adjust spacing */
     cursor: pointer;
-    font-size: 22px;
+    font-size: 15px;
     
+    font-size: 20px; /* Adjust font size */
+}
+
+#top-nav li:hover
+{
+    background-color: #084767;
+}
+#top-nav li:hover {
+    background-color: #084767;
+}
+
+#top-nav h3
+{
+    font-size: 15px;
+}
+
+.image-caption-container {
+    justify-content: space-between;
+    display: flex;
+    height: 50px;
+}
+
+.image-caption-container img {
+    max-width: 50px; /* Adjust the size of the image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.checkout {
+    margin-top: 5px; /* Space between image and caption */
+    font-size: 14px; /* Adjust font size as needed */
 }
 
 
 #order-method
 {
+/* Button styling */
+nav button {
+    color: #0B648F;
+}
+
+/* Image caption container styling */
+.image-caption-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none; /* Remove underline from link */
+    color: white; /* Ensure the caption text is readable */
+}
+
+.image-caption-container img {
+    max-width: 50px; /* Adjust image size */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.checkout {
+    margin-top: 5px; /* Space between image and caption */
+    font-size: 14px; /* Adjust font size */
+}
+
+/* Order method section styling */
+#order-method {
     font-size: 40px;
     background-color:white;
     display:flex;
+    margin-right: 20px;
+    align-items: center;
+    background-color: white;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+    margin: auto;
+    margin-right: 20px;
+}
+
+#order-method img
+{
+    max-width:120px; 
+    object-fit: contain;
 }
 
 #order-method h2 
 {
-    font-size: 40px;
-    color: #0B648F;
+    font-size: 25px;
+/* Order method images styling */
+#order-method img {
+    max-width: 120px; 
+    object-fit: contain;
 }
 
-#order-method button
-{
+/* Order method heading styling */
+#order-method h2 {
+    font-size: 25px;
+    color: #0B648F;
+    margin-right:25px;
+    margin-right: 25px;
+}
+
+/* Order method button styling */
+#order-method button {
     font-size: 17px;
+    padding: 10px 30px;
+    margin: 0;
     cursor: pointer;
     background-color: #E21737;
     color: white;
+    width: 175px;
+    height: 100%;
+    width: 175px;
+    height: auto; /* Adjust height to fit content */
     border: none;
+}
+
+#delivery
+{
+    margin-left: 20px
 }
 
 #order-method button:hover
 {
-    color: white;
+    background-color: rgb(164, 17, 47);
+#order-method button:hover {
+    background-color: rgb(164, 17, 47);
 }
 
 #order-method h3 
 {
-    color:rgba(187, 187, 187, 0.758);
+    color:rgba(187, 187, 187, 0.572);
+    font-size: 20px;
+    padding: 10px;
+/* Order method heading 3 styling */
+#order-method h3 {
+    color: rgba(187, 187, 187, 0.572);
+    font-size: 20px;
+    padding: 10px;
 }
 
-#home h2
+main
 {
-    font-size: 40px;
+    max-width: 1000px;
+    margin: auto;
+/* Main image styling */
+main img {
+    object-fit: contain;
+    max-width: 1000px;
+    margin: auto;
+    display: block; /* Center image */
 }
 
-#home p 
+main img
 {
-    color: 	#0B648F;
+    object-fit: contain;
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+/* Main paragraph styling */
+main p {
+    font-size: 24px;
+    text-align: center;
+    color: gray;
+}
+
+main p
+{
+    font-size: 24px;
+    text-align: center;
+    color:gray;
+}
+
+main ul
+{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main li
+{
+    color:#0B648F;
+    margin-right: 25px;
+    font-size: 20px;
+}
+
+footer
+{
+    background-color: rgba(187, 187, 187, 0.572);
+}
+
+.footer-content
+{
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+    justify-content: space-between;
+    text-align: center;
+}
+
+footer ul 
+{
+    list-style-type: none;
+}
+
+footer strong 
+{
+    font-size: 15px;
+}
+
+footer li
+{
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: rgb(97, 96, 96);
+}
+/* Main list styling */
+main ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: center; /* Center list items */
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+main li {
+    color: #0B648F;
+    margin: 0 15px; /* Adjust spacing between items */
+    font-size: 20px;
+}
+
+
+footer {
+    background-color: rgba(187, 187, 187, 0.572); /* Full-width background */
+    padding: 20px 0; /* Optional padding for better spacing */
+}
+
+.footer-content {
+    max-width: 1000px; /* Limit the width of the content */
+    margin: 0 auto; /* Center the content */
+    display: flex;
+    justify-content: space-between;
+    text-align: center; /* Center text within each column */
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer li {
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: rgb(97, 96, 96);
+}
+
+footer strong {
+    font-size: 15px;
 }
