@@ -26,7 +26,42 @@ public class ProductDao
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public ArrayList<Product> getProductsByCategory(int categoryId)
+    public ArrayList<Product> getAllProducts()
+    {
+        var products = new ArrayList<Product>();
+
+        String sql = """
+                product_id
+                , category_id
+                , product_name
+                , quantity_per_unit
+                , unit_price
+                , units_in_stock
+                , units_on_order
+                , reorder_level
+            FROM products
+            """;
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql);
+
+        while(row.next())
+        {
+            int productId = row.getInt("product_id");
+            int categoryId = row.getInt("category_id");
+            String productName = row.getString("product_name");
+            String quantityPerUnit = row.getString("quantity_per_unit");
+            double unitPrice = row.getDouble("unit_price");
+            int unitsInStock = row.getInt("units_in_stock");
+            int unitsOnOrder = row.getInt("units_on_order");
+            int reorderLevel = row.getInt("reorder_level");
+
+            Product product = new Product(productId, categoryId,productName,quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, reorderLevel);
+            products.add(product);
+        }
+        return products;
+    }
+
+    public ArrayList<Product> getProductsByCategoryId(int categoryId)
     {
         ArrayList<Product> products = new ArrayList<>();
 
@@ -64,7 +99,7 @@ public class ProductDao
         return products;
     }
 
-    public Product getProduct(int productId)
+    public Product getProductById(int productId)
     {
 
         String sql = """
@@ -96,6 +131,40 @@ public class ProductDao
             return product;
         }
 
+        return null;
+    }
+
+    public Product getProductByName(String name)
+    {
+        String sql = """
+                product_id
+                , category_id
+                , product_name
+                , quantity_per_unit
+                , unit_price
+                , units_in_stock
+                , units_on_order
+                , reorder_level
+            FROM products
+            WHERE product_name = ?
+            """;
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, name);
+
+        if(row.next())
+        {
+            int productId = row.getInt("product_id");
+            int categoryId = row.getInt("category_id");
+            String productName = row.getString("product_name");
+            String quantityPerUnit = row.getString("quantity_per_unit");
+            double unitPrice = row.getDouble("unit_price");
+            int unitsInStock = row.getInt("units_in_stock");
+            int unitsOnOrder = row.getInt("units_on_order");
+            int reorderLevel = row.getInt("reorder_level");
+
+            Product product = new Product(productId, categoryId,productName,quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, reorderLevel);
+            return product;
+        }
         return null;
     }
 

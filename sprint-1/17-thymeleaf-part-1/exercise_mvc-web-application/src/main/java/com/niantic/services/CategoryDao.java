@@ -51,6 +51,33 @@ public class CategoryDao
         return categories;
     }
 
+
+    public ArrayList<Category> getCategoryByName(String searchName)
+    {
+        searchName = "%" + searchName +"%";
+
+        var categories = new ArrayList<Category>();
+
+        String sql = """
+                SELECT category_id, category_name, description
+                FROM categories
+                WHERE category_name = ?;
+                """;
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, searchName);
+
+        if(row.next())
+        {
+            int categoryId = row.getInt("category_id");
+            String categoryName = row.getString("category_name");
+            String description = row.getString("description");
+
+            var category = new Category(categoryId, categoryName, description);
+            categories.add(category);
+        }
+        return categories;
+    }
+
     public Category getCategoryById(int categoryId)
     {
         Category category = null;
