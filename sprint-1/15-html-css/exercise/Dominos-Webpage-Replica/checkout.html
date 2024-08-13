@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domino's Pizza</title>
-    <link rel="stylesheet" href="details.css"> 
+    <title>Domino's Pizza Checkout</title>
+    <link rel="stylesheet" href="checkout.css"> 
 </head>
 
 <body>
@@ -14,13 +14,13 @@
                 <nav id="top-nav">
                     <img src="images/dominos_logo.png" alt="dominos logo">
                     <ul>
-                        <li>ORDER ONLINE</li>
-                        <li>LOCATIONS</li>
+                        <li>HOME</li>
                         <li>MENU</li>
                         <li>COUPONS</li>
+                        <li>GROUP ORDERING</li>
                         <li>TRACKER</li>
                         <li>REWARDS</li>
-                        <li>SIGN IN & EARN REWARDS</li>
+                        <li id="right">SIGN IN & EARN REWARDS</li>
                     </ul>
                 </nav>
             </div>
@@ -28,25 +28,27 @@
     </header>
 
     <main>
-        <div id = "order-method" class="container">
-            <img src="images/horizontal-line.png" alt="line1">
-            <h2>START YOUR ORDER</h2>
-            <button id="delivery">DELIVERY</button>
-            <h3>or</h3>
-            <button id="carryout">CARRYOUT</button>
-            <img src="images/horizontal-line.png" alt="line2">
+        <div id="top-background">
+            <div id="pickup-info">
+                <h1>CHECKOUT</h1>
+                <p>Carryout from 100 Dixon Road Milpitas, CA 95035.</p>
+                <p>Your order will be ready 16-26 minutes after it is placed.</p>
+                <div id="order-cost">
+                    <p>TOTAL: $27.30 SHOW ORDER SUMMARY</p>
+                </div>
+            </div>
         </div>
-        <section id="deals">
-            <img src="images/deals.png">
-        </section>
-        <p>Browse Our Menu</p>
-        <ul>
-            <li>LOCATIONS</li>
-            <li>EMAIL & TEXT OFFERS</li>
-            <li>GIFT CARDS</li>
-            <li>TRACKER</li>
-            <li>NUTRITION</li>
-        </ul>
+        <div id="personal-info">
+            <div>
+                <h2>1 OF 2 | INFO</h2>
+                <h3>YOUR INFORMATION</h3>
+            </div>
+            <div> 
+                <h2>2 OF 2 | PAYMENT</h2>
+                <h3>PAYMENT INFORMATON</h3>
+    
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -87,4 +89,3 @@
         </div>
     </footer>
 </body>
-</html>

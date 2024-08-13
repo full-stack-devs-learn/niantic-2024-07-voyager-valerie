@@ -1,0 +1,131 @@
+body {
+    font-family: 'Futura', 'Helvetica', 'Arial', sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#header-background {
+    background-color: #0B648F;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+}
+
+#header-content {
+    width: 1000px;
+    margin: 0 auto; /* Center horizontally */
+    padding: 12px; /* Add some padding to ensure spacing */
+}
+
+#top-nav {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#top-nav img {
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+}
+
+#top-nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#top-nav li {
+    margin-right: 20px; /* Adjust spacing */
+    cursor: pointer;
+    font-size: 15px; /* Adjust font size */
+}
+
+#top-nav li:hover {
+    background-color: #084767;
+}
+
+#top-background {
+    background-color: rgb(246, 246, 246);
+    padding: 20px 0; /* Optional: Add padding for spacing */
+}
+
+#pickup-info {
+    width: 1000px;
+    margin: auto;
+    background-color: rgb(246, 246, 246);
+}
+
+#order-cost {
+    background-color: white;
+    border: rgb(246, 246, 246);
+    border-width: 1px;
+}
+
+#personal-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 1000px;
+    margin: auto;
+}
+
+.left-column {
+    text-align: left;
+}
+
+main {
+    background-color: rgb(246, 246, 246); /* Apply light gray background to the main container */
+    padding: 20px; /* Optional: Add padding to prevent content from touching the edges */
+}
+
+main p {
+    padding: 0;
+}
+
+main h2 {
+    background-color: #0B648F;
+    color: white;
+}
+
+main div {
+    background-color: white;
+}
+
+footer {
+    background-color: rgba(187, 187, 187, 0.572);
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+    justify-content: space-between;
+    text-align: center;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer strong {
+    font-size: 15px;
+}
+
+footer li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: rgb(97, 96, 96);
+}

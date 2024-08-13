@@ -13,15 +13,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
 /* Header styles */
 header {
     margin: 0;
     padding: 0;
 }
 
-#top-nav
-{
-    max-width: 1000px;
 /* Full-width background for header */
 #header-background {
     background-color: #0B648F;
@@ -47,9 +46,11 @@ header {
 
 #top-nav img
 {
-    height: 5px;
+    width: 100px;
+    height: auto;
     display: flex;
-    object-fit: contain;
+    object-fit: cover;
+    background-color: #0B648F;
 }
 
 nav button
@@ -75,19 +76,13 @@ nav p
     font-size: 12px;
 }
 
-#header-content img 
-{
-    background-color: #0B648F;
-/* Logo styling */
-#top-nav img {
-    max-width: 120px;
-    height: auto;
-}
 
 /* Navigation list styling */
 #top-nav ul {
     display: flex;
     list-style-type: none;
+    justify-content: center;
+    align-items: center;
     margin: 0;
     padding: 0;
 }
@@ -95,33 +90,12 @@ nav p
 #top-nav li {
     margin-right: 20px; /* Adjust spacing */
     cursor: pointer;
-    font-size: 15px;
-    
     font-size: 20px; /* Adjust font size */
 }
 
 #top-nav li:hover
 {
     background-color: #084767;
-}
-#top-nav li:hover {
-    background-color: #084767;
-}
-
-#top-nav h3
-{
-    font-size: 15px;
-}
-
-.image-caption-container {
-    justify-content: space-between;
-    display: flex;
-    height: 50px;
-}
-
-.image-caption-container img {
-    max-width: 50px; /* Adjust the size of the image */
-    height: auto; /* Maintain aspect ratio */
 }
 
 .checkout {
@@ -130,30 +104,9 @@ nav p
 }
 
 
-#order-method
-{
 /* Button styling */
 nav button {
     color: #0B648F;
-}
-
-/* Image caption container styling */
-.image-caption-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none; /* Remove underline from link */
-    color: white; /* Ensure the caption text is readable */
-}
-
-.image-caption-container img {
-    max-width: 50px; /* Adjust image size */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.checkout {
-    margin-top: 5px; /* Space between image and caption */
-    font-size: 14px; /* Adjust font size */
 }
 
 /* Order method section styling */
@@ -171,19 +124,11 @@ nav button {
     margin-right: 20px;
 }
 
-#order-method img
-{
-    max-width:120px; 
-    object-fit: contain;
-}
-
-#order-method h2 
-{
-    font-size: 25px;
 /* Order method images styling */
-#order-method img {
+.container img {
     max-width: 120px; 
     object-fit: contain;
+
 }
 
 /* Order method heading styling */
@@ -217,15 +162,8 @@ nav button {
 #order-method button:hover
 {
     background-color: rgb(164, 17, 47);
-#order-method button:hover {
-    background-color: rgb(164, 17, 47);
 }
 
-#order-method h3 
-{
-    color:rgba(187, 187, 187, 0.572);
-    font-size: 20px;
-    padding: 10px;
 /* Order method heading 3 styling */
 #order-method h3 {
     color: rgba(187, 187, 187, 0.572);
@@ -237,33 +175,30 @@ main
 {
     max-width: 1000px;
     margin: auto;
+}
 /* Main image styling */
-main img {
-    object-fit: contain;
-    max-width: 1000px;
-    margin: auto;
-    display: block; /* Center image */
+
+#deals
+{
+    display: grid;
+    width: 1000px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
 }
 
-main img
+#deals img
 {
-    object-fit: contain;
-    max-width: 1000px;
-    margin: auto;
-    display: flex;
-    align-items: center;
+    width: 1000px;
+    height: auto;
+    object-fit: cover;
+}
+
+
 /* Main paragraph styling */
 main p {
     font-size: 24px;
     text-align: center;
     color: gray;
-}
-
-main p
-{
-    font-size: 24px;
-    text-align: center;
-    color:gray;
 }
 
 main ul
@@ -281,36 +216,7 @@ main li
     font-size: 20px;
 }
 
-footer
-{
-    background-color: rgba(187, 187, 187, 0.572);
-}
 
-.footer-content
-{
-    display: flex;
-    max-width: 1000px;
-    margin: 0 auto;
-    justify-content: space-between;
-    text-align: center;
-}
-
-footer ul 
-{
-    list-style-type: none;
-}
-
-footer strong 
-{
-    font-size: 15px;
-}
-
-footer li
-{
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: rgb(97, 96, 96);
-}
 /* Main list styling */
 main ul {
     display: flex;
@@ -327,32 +233,41 @@ main li {
     font-size: 20px;
 }
 
-
-footer {
-    background-color: rgba(187, 187, 187, 0.572); /* Full-width background */
-    padding: 20px 0; /* Optional padding for better spacing */
+main p
+{
+    color:#0B648F;
 }
 
-.footer-content {
-    max-width: 1000px; /* Limit the width of the content */
-    margin: 0 auto; /* Center the content */
+footer
+{
+    background-color: rgba(187, 187, 187, 0.572);
+    padding: 20px 0;
+}
+
+.footer-content
+{
     display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
     justify-content: space-between;
-    text-align: center; /* Center text within each column */
+    text-align: center;
 }
 
-footer ul {
+footer ul 
+{
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-footer li {
-    margin-bottom: 5px;
-    font-size: 13px;
-    color: rgb(97, 96, 96);
+footer strong 
+{
+    font-size: 15px;
 }
 
-footer strong {
-    font-size: 15px;
+footer li
+{
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: rgb(97, 96, 96);
 }
