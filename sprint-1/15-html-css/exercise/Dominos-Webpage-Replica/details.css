@@ -53,13 +53,10 @@ header {
     background-color: #0B648F;
 }
 
-nav button
+a
 {
-    color:#0B648F;
-    background-color: white;
-    height: 25px;
-    width: 50px;
-    font-size: 15px;
+    text-decoration: none;
+    color: white;
 }
 
 nav p 

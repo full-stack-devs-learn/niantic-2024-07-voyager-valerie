@@ -24,6 +24,12 @@ header {
     padding: 12px; /* Add some padding to ensure spacing */
 }
 
+a
+{
+    text-decoration: none;
+    color: white;
+}
+
 #top-nav {
     color: white;
     display: flex;
@@ -58,6 +64,7 @@ header {
 #top-background {
     background-color: rgb(246, 246, 246);
     padding: 20px 0; /* Optional: Add padding for spacing */
+    width: 100%;
 }
 
 #pickup-info {
@@ -70,17 +77,30 @@ header {
     background-color: white;
     border: rgb(246, 246, 246);
     border-width: 1px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#blue-text
+{
+    color:#0c85c2;
 }
 
 #personal-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     width: 1000px;
     margin: auto;
+    text-align: left;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 
-.left-column {
+#payment-info
+{
     text-align: left;
+    width: 1000px;
+    margin: auto;
+    background-color: white;
 }
 
 main {
