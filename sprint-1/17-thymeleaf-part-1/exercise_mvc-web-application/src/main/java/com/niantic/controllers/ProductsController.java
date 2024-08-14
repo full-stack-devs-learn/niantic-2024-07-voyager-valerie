@@ -12,8 +12,8 @@ public class ProductsController
 {
     private ProductDao productDao = new ProductDao();
 
-/*    @GetMapping("/products")
-    public String getAllProducts(Model model, @RequestParam(required = false) String last)
+    @GetMapping("/products")
+    public String getAllProducts(Model model, String last)
     {
         ArrayList<Product> products;
 
@@ -21,5 +21,5 @@ public class ProductsController
         {
             products = productDao.getAllProducts();
         }
-    }*/
+    }
 }
