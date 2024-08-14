@@ -21,5 +21,12 @@ public class ProductsController
         {
             products = productDao.getAllProducts();
         }
+        else
+        {
+            products = productDao.getProductByName(last);
+        }
+
+        model.addAttribute("products", products);
+        return "products/index";
     }
 }
