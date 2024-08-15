@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 
-public class ProductsController
+/*public class ProductsController
 {
     private ProductDao productDao = new ProductDao();
 
@@ -21,12 +21,12 @@ public class ProductsController
         {
             products = productDao.getAllProducts();
         }
-        else
+       else
         {
             products = productDao.getProductByName(last);
         }
 
         model.addAttribute("products", products);
         return "products/index";
-    }
-}
+    }*/
+

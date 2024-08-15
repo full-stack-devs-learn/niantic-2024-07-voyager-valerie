@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+<div th:replace="fragments/header.html :: nav"></div>
+
+<body>
+
+<main class="container mt-4">
+    <h1 th:if="${action} == 'add'">Add Category</h1>
+    <h1 th:if="${action} == 'edit'">Edit Category</h1>
+
+    <form action="#" th:object="${category}" method="post">
+        <div class="form-floating-mb-3">
+            <label th:for="*{categoryName}">Category Name</label>
+            <input class="form-control" type="text" th:field="*{categoryName}">
+        </div>
+        <div class="form-floating-mb-3">
+            <label th:for="*{description}">Description</label>
+            <input class="form-control" type="text" th:field="*{description}">
+        </div>
+        <input class="btn btn-outline-success" type="submit" value="Save">
+    </form>
+
+</main>
+</body>
+</html>
+
+
+
