@@ -5,32 +5,73 @@ Class: Rectangle
     Bug 1:
 
         Describe the bug/error:
+            A value error based on incorrect function declaration.
 
         Where was the bug? (function, line number)
+            getArea(), line 42
 
         What test helped you find the bug?
+            getArea_shouldReturn_theProductOfNumbers()
 
         What did you do to fix the bug?
+            removed "this." from width within the function.
 
-    Bug 2:
+    Bug 2 (I might've created this myself):
 
         Describe the bug/error:
+            Variable assignment error.
 
         Where was the bug? (function, line number)
+            getArea(), line 40
 
         What test helped you find the bug?
+            getArea_shouldReturn_theProductOfNumbers()
 
         What did you do to fix the bug?
+            Changed the variable name "length" to "height", to be consistent with the other variable names.
 
     Bug 3:
 
         Describe the bug/error:
+            Misplaced getters and setters
 
         Where was the bug? (function, line number)
+            Within the Rectangle class, lines 6-23
 
         What test helped you find the bug?
+            getArea_shouldReturn_theProductOfNumbers(), which keeps telling me that "this.rectangle is null"
 
         What did you do to fix the bug?
+            Moved all the getters and setters after the Rectangle() function calls that handle the default & unique values inputted by the user.
+
+    Bug 4:
+
+        Describe the bug/error:
+            Calculation error for perimeter
+
+        Where was the bug? (function, line number)
+            getPerimeter(), line 52
+
+        What test helped you find the bug?
+            getPerimeter_shouldReturn_theSumOfTwoNumbersMultipliedByTwo()
+
+        What did you do to fix the bug?
+            Multiplied the width and height by 2
+
+        Bug 5:
+
+            Describe the bug/error:
+                Calculation error for perimeter
+
+            Where was the bug? (function, line number)
+                getPerimeter(), line 56
+
+            What test helped you find the bug?
+                getPerimeter_shouldReturn_theSumOfTwoNumbersMultipliedByTwo()
+
+            What did you do to fix the bug?
+                Perimeter was originally taking the default values because "this." was included in both width and height,
+                meaning the perimeter function always calculates the perimeter of a 5x5 rectangle.
 
 
 
@@ -40,23 +81,89 @@ Class: Quiz
     Bug 1:
 
         Describe the bug/error:
+            Value error
 
         Where was the bug? (function, line number)
+            getLetterGrade(), line 47
 
         What test helped you find the bug?
+            getPercent_shouldReturn_studentScoresByPercentage()
 
         What did you do to fix the bug?
+            Change the value to 60
 
     Bug 2:
 
         Describe the bug/error:
+            Value error
 
         Where was the bug? (function, line number)
+            getLetterGrade(), lines 44-47
 
         What test helped you find the bug?
+            getPercent_shouldReturn_studentScoresByPercentage()
 
         What did you do to fix the bug?
+            Be inclusive of the multiples of 10 each if statement was looking for, because those values are included
+            in each letter grade. I added an "=" to the operators
 
+
+    Bug 3:
+
+        Describe the bug/error:
+            Value type error
+
+        Where was the bug? (function, line number)
+            getPercent(), line 38
+
+        What test helped you find the bug?
+            getPercent_shouldReturn_studentScoresByPercentage()
+
+        What did you do to fix the bug?
+            Added a starting value of 0 for the score
+
+
+    Bug 4:
+
+        Describe the bug/error:
+            Variable definition error, missing a default value for score
+
+        Where was the bug? (function, line number)
+            Quiz(), line 29
+
+        What test helped you find the bug?
+            getPercent_shouldReturn_studentScoresByPercentage()
+
+        What did you do to fix the bug?
+            Added a starting value of 0 for the score
+
+    Bug 5:
+
+        Describe the bug/error:
+            Misplaced getters and setters
+
+        Where was the bug? (function, line number)
+            Within the Quiz class, I forgot the exact lines, but somewhere between lines 9-20
+
+        What test helped you find the bug?
+            getPercent_shouldReturn_studentScoresByPercentage()
+
+        What did you do to fix the bug?
+            Moved all the getters and setters after the Quiz() function calls
+
+    Bug 6:
+
+        Describe the bug/error:
+            Mismatched data types in calculation
+
+        Where was the bug? (function, line number)
+            getPercent(), line 38
+
+        What test helped you find the bug?
+            getPercent_shouldReturn_studentScoresByPercentage()
+
+        What did you do to fix the bug?
+            Need to allow doubles in calculation, even though the values of the variables are passed in as integers. Convert calculation to double, but convert back to int once the calculation is complete
 
 *** Optional / Challenge ***
 

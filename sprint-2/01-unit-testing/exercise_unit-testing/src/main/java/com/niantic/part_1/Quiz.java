@@ -6,6 +6,13 @@ public class Quiz
     private final int possiblePoints;
     private final String studentName;
 
+    public Quiz(int possiblePoints, String studentName)
+    {
+        this.possiblePoints = possiblePoints;
+        this.studentName = studentName;
+        this.score = 0;                     // Default score
+    }
+
     public int getScore()
     {
         return score;
@@ -26,25 +33,28 @@ public class Quiz
         return studentName;
     }
 
-    public Quiz(int possiblePoints, String studentName)
-    {
-        this.possiblePoints = possiblePoints;
-        this.studentName = studentName;
-    }
-
     public int getPercent()
     {
-        return score / possiblePoints * 100;
+        if (score < 0)
+        {
+            return 0;
+        }
+        if(score >= possiblePoints)
+        {
+            return 100;
+        }
+
+        return (int) ((double) score / possiblePoints * 100);
     }
 
     public String getLetterGrade()
     {
         int percent = getPercent();
 
-        if(percent > 90) return "A";
-        else if(percent > 80) return "B";
-        else if(percent > 70) return "C";
-        else if(percent > 50) return "D";
+        if(percent >= 90) return "A";
+        else if(percent >= 80) return "B";
+        else if(percent >= 70) return "C";
+        else if(percent >= 60) return "D";
         else return "F";
     }
 }

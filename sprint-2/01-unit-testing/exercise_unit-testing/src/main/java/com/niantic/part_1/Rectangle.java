@@ -5,6 +5,18 @@ public class Rectangle
     public int width;
     public int height;
 
+    public Rectangle()
+    {
+        width = 5;
+        height = 5;
+    }
+
+    public Rectangle(int width, int height)
+    {
+        this.width = width;
+        this.height = height;
+    }
+
     public int getWidth()
     {
         return width;
@@ -25,31 +37,23 @@ public class Rectangle
         this.height = height;
     }
 
-    public Rectangle()
+    public int getArea(int width, int height)
     {
-        width = 5;
-        height = 5;
+        if (width >= 0 && height >= 0)
+        {
+            return width * height;
+        }
+        return 0;
     }
 
-    public Rectangle(int width, int height)
-    {
-        this.width = width;
-        this.height = height;
-    }
-
-    public int getArea()
-    {
-        return width * height;
-    }
-
-    public int getPerimeter()
+    public int getPerimeter(int width, int height)
     {
         if(width <= 0 || height <= 0)
         {
             return 0;
         }
 
-        return width + height;
+        return 2 * (width + height);
     }
 
 }
