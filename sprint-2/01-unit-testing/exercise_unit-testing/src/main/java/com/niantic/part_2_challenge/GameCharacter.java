@@ -26,7 +26,7 @@ public class GameCharacter
         this.maxEnergyLevel = maxEnergyLevel;
         this.name = name;
 
-        this.energyLevel = 0;
+        this.energyLevel = 0;    // starting energy lvl should prob be max, or current energy lvl?
     }
 
     public void takeHit(int damage)
