@@ -16,7 +16,13 @@ public class Reducers
      */
     public double totalSales(List<LineItem> lineItems)
     {
-        return 0;
+        double initialValue = 0.0;
+
+        double total = lineItems.stream()
+                .map(LineItem::getLineTotal)
+                .reduce(initialValue, (sum, lineTotal) -> sum + lineTotal);
+
+        return total;
     }
 
     /*
@@ -26,7 +32,13 @@ public class Reducers
      */
     public double averageSalesPerLineItem(List<LineItem> lineItems)
     {
-        return 0;
+        double sumOfSale = lineItems.stream()
+                .map(LineItem::getLineTotal)
+                .reduce(0.0, Double::sum);
+
+        long count = lineItems.size();
+
+        return sumOfSale / count;
     }
 
     /*

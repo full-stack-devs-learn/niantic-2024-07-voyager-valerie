@@ -1,9 +1,13 @@
 package com.niantic.exercises;
 
 import com.niantic.models.LineItem;
+import com.niantic.services.FileLoader;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
+import java.util.stream.Collectors;
 
 public class Filters
 {
@@ -15,7 +19,13 @@ public class Filters
      */
     public List<LineItem> filterByCompanyName(List<LineItem> lineItems, String companyName)
     {
-        return new ArrayList<>();
+        String lowerCaseCompanyName = companyName.toLowerCase();
+
+        var companyLineItems = lineItems.stream()
+                                .filter(lineItem -> lineItem.getCompanyName()
+                                .toLowerCase().contains(lowerCaseCompanyName));
+
+        return companyLineItems.toList();
     }
 
     /*
@@ -25,7 +35,14 @@ public class Filters
      */
     public List<LineItem> filterByCategory(List<LineItem> lineItems, String categoryName)
     {
-        return new ArrayList<>();
+        String lowerCaseCategoryNames = categoryName.toLowerCase();
+
+        var categoryLineItems = lineItems.stream()
+                        .filter(lineItem -> lineItem.getCategoryName()
+                        .toLowerCase().contains(lowerCaseCategoryNames))
+                        .toList();
+
+        return categoryLineItems;
     }
 
     /*
@@ -35,7 +52,14 @@ public class Filters
      */
     public List<LineItem> filterByProduct(List<LineItem> lineItems, String productName)
     {
-        return new ArrayList<>();
+        String lowerCaseProductName = productName.toLowerCase();
+
+        var productLineItems = lineItems.stream()
+                .filter(lineItem -> lineItem.getProductName()
+                        .toLowerCase().contains(lowerCaseProductName))
+                        .toList();
+
+        return productLineItems;
     }
 
     /*
@@ -44,7 +68,14 @@ public class Filters
      */
     public List<LineItem> filterByYear(List<LineItem> lineItems, int year)
     {
-        return new ArrayList<>();
+        var yearLineItems = lineItems.stream()
+                .filter(lineItem -> {
+                    int years = lineItem.getOrderDate().getYear();
+                    return years == year;
+                })
+                .collect(Collectors.toList());
+
+        return yearLineItems;
     }
 
 
@@ -54,6 +85,13 @@ public class Filters
      */
     public List<LineItem> filterByOrderId(List<LineItem> lineItems, int orderId)
     {
-        return new ArrayList<>();
+        var orderIdLineItems = lineItems.stream()
+                .filter(lineItem -> {
+                    int id = lineItem.getOrderId();
+                    return id == orderId;
+                })
+                .collect(Collectors.toList());
+
+        return orderIdLineItems;
     }
 }
