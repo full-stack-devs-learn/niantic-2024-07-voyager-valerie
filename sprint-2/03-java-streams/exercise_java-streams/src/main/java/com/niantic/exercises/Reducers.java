@@ -3,6 +3,8 @@ package com.niantic.exercises;
 import com.niantic.models.LineItem;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 public class Reducers
 {
@@ -83,7 +85,10 @@ public class Reducers
      */
     public double maxLineItem(List<LineItem> lineItems)
     {
-        return 0;
+        Optional<LineItem> maxLineItem = lineItems.stream()
+                .max((item1, item2) -> Double.compare(item1.getLineTotal(), item2.getLineTotal()));
+
+        return maxLineItem.map(LineItem::getLineTotal).orElseThrow(() -> new NoSuchElementException("No line items present"));
     }
 
     /*
@@ -94,7 +99,12 @@ public class Reducers
      */
     public double minLineItem(List<LineItem> lineItems)
     {
-        return 0;
+        // Find the line item with the minimum line total
+        Optional<LineItem> minLineItem = lineItems.stream()
+                .min((item1, item2) -> Double.compare(item1.getLineTotal(), item2.getLineTotal()));
+
+        // Return the minimum line total, or throw an exception if no line items exist
+        return minLineItem.map(LineItem::getLineTotal).orElseThrow(() -> new NoSuchElementException("No line items present"));
     }
 
 }
