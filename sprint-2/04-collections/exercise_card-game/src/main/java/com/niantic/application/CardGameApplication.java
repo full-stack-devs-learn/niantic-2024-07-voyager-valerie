@@ -2,7 +2,9 @@ package com.niantic.application;
 
 import com.niantic.models.Card;
 import com.niantic.models.Deck;
+import com.niantic.models.Hand;
 import com.niantic.models.Player;
+import com.niantic.models.SpecialCard;
 import com.niantic.ui.UserInterface;
 
 import java.util.ArrayList;
@@ -15,7 +17,8 @@ public class CardGameApplication
     public void run()
     {
         addPlayers();
-        dealCards();
+
+        deck.startGame(players);
         UserInterface.displayAllPlayersCards(players);
     }
 
@@ -35,7 +38,7 @@ public class CardGameApplication
 
     private void addPlayers()
     {
-        players.add(new Player("One"));
-        players.add(new Player("Two"));
+        players.add(new Player("Oliver"));
+        players.add(new Player("Mary"));
     }
 }

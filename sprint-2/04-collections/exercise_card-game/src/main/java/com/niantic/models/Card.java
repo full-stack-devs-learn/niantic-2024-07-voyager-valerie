@@ -20,4 +20,10 @@ public class Card
     {
         return number;
     }
+
+    @Override
+    public String toString() {
+        // Default toString for Card
+        return color + " " + number;
+    }
 }

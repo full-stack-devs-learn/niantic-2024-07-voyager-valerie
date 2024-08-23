@@ -11,18 +11,6 @@ public class Hand
         return cards;
     }
 
-    public int getPointValue()
-    {
-        // return sum of all card points
-        int sum = 0;
-
-        for(Card card : cards)
-        {
-            sum += card.getValue();
-        }
-        return sum;
-    }
-
     public int getCardCount()
     {
         return cards.size();

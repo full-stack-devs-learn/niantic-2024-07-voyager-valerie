@@ -21,13 +21,23 @@ public class Player
         hand.dealTo(card);
     }
 
-    public int getHandValue()
+    public int getHandCount()
     {
-        return hand.getPointValue();
+        return hand.getCardCount();
     }
 
     public Hand getHand()
     {
         return hand;
+    }
+
+    public void playCard(Card card)
+    {
+
+    }
+
+    public void reversePlayerOrder(Player player)
+    {
+
     }
 }
