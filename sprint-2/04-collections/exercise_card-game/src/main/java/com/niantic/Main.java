@@ -8,5 +8,7 @@ public class Main
     {
         CardGameApplication game = new CardGameApplication();
         game.run();
+
+        // figure out how to use startGame and deal the cards out for the players
     }
 }

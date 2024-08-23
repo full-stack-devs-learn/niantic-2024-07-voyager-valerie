@@ -15,7 +15,7 @@ public class UserInterface
         {
             System.out.println(player.getName());
             System.out.println("Cards in Hand" + ": " + player.getHandCount());
-            
+
             System.out.println();
             for (Card card : player.getHand().getCards())
             {
