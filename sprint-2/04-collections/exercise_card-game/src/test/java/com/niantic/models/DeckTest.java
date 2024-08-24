@@ -3,7 +3,9 @@ package com.niantic.models;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -131,7 +133,7 @@ class DeckTest
         int expectedHandPerPlayer = 7;
 
         Deck deck = new Deck();
-        List<Player> players = new ArrayList<>();
+        Queue<Player> players = new LinkedList<>();
 
         players.add(new Player("Eren"));
         players.add(new Player("Mikasa"));
@@ -154,7 +156,7 @@ class DeckTest
     {
         // arrange
         Deck deck = new Deck();
-        List<Player> players = new ArrayList<>();
+        Queue<Player> players = new LinkedList<>();
 
         int expectedCardsPerPlayer = 7;
         int totalCardsInDeck = 108;

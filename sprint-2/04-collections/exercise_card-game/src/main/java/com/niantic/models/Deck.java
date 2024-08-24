@@ -1,9 +1,6 @@
 package com.niantic.models;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Deck
 {
@@ -63,7 +60,7 @@ public class Deck
         Collections.shuffle(cards);
     }
 
-    public void startGame(List<Player> players) {
+    public void startGame(Queue<Player> players) {
         shuffle();
 
         for (Player player : players) {

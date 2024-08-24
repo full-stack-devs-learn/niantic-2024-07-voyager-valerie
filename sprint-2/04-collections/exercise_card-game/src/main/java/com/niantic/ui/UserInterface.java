@@ -4,10 +4,11 @@ import com.niantic.models.Card;
 import com.niantic.models.Player;
 
 import java.util.ArrayList;
+import java.util.Queue;
 
 public class UserInterface
 {
-    public static void displayAllPlayersCards(ArrayList<Player> players)
+    public static void displayAllPlayersCards(Queue<Player> players)
     {
         System.out.println("All Players");
         System.out.println("-".repeat(30));
