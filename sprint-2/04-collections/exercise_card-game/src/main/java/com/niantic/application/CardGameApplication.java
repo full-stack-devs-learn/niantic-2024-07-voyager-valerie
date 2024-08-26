@@ -106,6 +106,7 @@ public class CardGameApplication
                         if (chosenCard instanceof SpecialCard) {
                             SpecialCard specialCard = (SpecialCard) chosenCard;
 
+                            // if it's a reverse, reverse the player order
                             if (specialCard.getType().equals("Reverse") && specialCard.getColor().equals(currentCard.getColor())) {
                                 reversePlayerOrder(players);
                                 System.out.println("UNO Reverse! Reverse player order.");
@@ -120,6 +121,8 @@ public class CardGameApplication
                                 validPlay = true;
                                 break;
                             }
+
+                            // skip the next player's turn
                             if (specialCard.getType().equals("Skip") &&
                                     specialCard.getColor().equals(currentCard.getColor())) {
                                 player.getHand().getCards().remove(chosenIndex);            // remove the Skip card from the player's hand
@@ -137,6 +140,41 @@ public class CardGameApplication
 
                                 validPlay = true;
                                 break;
+                            }
+
+                            // accept user input about the next color assignment
+                            if (specialCard.getType().equals("Wild") || specialCard.getType().equals("Draw Four"))
+                            {
+                                System.out.println("You played a Wild Card! Choose any color: red, blue, green, or yellow.");
+                                String newColor = scanner.nextLine().trim().toLowerCase();
+
+                                if (newColor.equals("red") ||
+                                    newColor.equals("blue") ||
+                                    newColor.equals("green") ||
+                                    newColor.equals("yellow"))
+
+                                    //
+                                    if(!newColor.equals(currentCard.getColor())) {
+                                        {
+                                            currentCard.setColor(newColor);
+                                            player.getHand().getCards().remove(chosenIndex);
+                                            setCurrentCard(chosenCard);
+
+                                            System.out.println();
+                                            System.out.println("You played a Wild Card! The color has successfully been changed to " + newColor + ".");
+                                            validPlay = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println();
+                                        System.out.println("Invalid color choice! The color must be different from " + currentCard + ".");
+                                    }
+                            }
+                            else
+                            {
+                                System.out.println();
+                                System.out.println("Invalid color choice. Choose red, blue, green, or yellow.");
                             }
                         }
 
@@ -178,6 +216,7 @@ public class CardGameApplication
                         }
 
                         System.out.println();
+                        System.out.println("This is the card that was just played: " + getCurrentCard());
                         System.out.println("Do you want to play " + drawnCard + "? (y/n)");
 
                         String playCard = scanner.nextLine().trim().toLowerCase();      // removes whitespace and ensures that user input returns in lowercase
