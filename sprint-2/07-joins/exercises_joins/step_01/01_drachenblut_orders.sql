@@ -5,3 +5,12 @@
 
 USE northwind;
 
+SELECT company_name,
+	order_id,
+    order_date,
+    shipped_date
+FROM customers AS c
+INNER JOIN orders AS o
+	ON c.customer_id = o.customer_id
+WHERE company_name = 'Drachenblut Delikatessen'
+ORDER BY shipped_date DESC;
