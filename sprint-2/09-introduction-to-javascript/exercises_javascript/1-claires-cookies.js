@@ -16,7 +16,9 @@
 
 function calculateOrderSubtotal(quantity)
 {
-	return 0;
+	const dozenCost = 12.95;
+
+	return dozenCost * quantity;
 }
 
 
@@ -40,7 +42,10 @@ function calculateOrderSubtotal(quantity)
 
 function calculateTax(quantity)
 {
-	return 0;
+	const dozenCost = 12.95;
+	const foodTax = 0.0575;
+
+	return Math.round(dozenCost * quantity * foodTax * 100) / 100;
 }
 
 
@@ -64,10 +69,16 @@ function calculateTax(quantity)
 */
 
 // create your function here
+function calculateOrderTotal(quantity)
+{
+	const dozenCost = 12.95;
+	const foodTax = 0.0575;
 
+	return Math.round(dozenCost * quantity * (1 + foodTax) * 100) / 100;
+}
 
 /*
-3.	With each order Claire needs to generate 
+4.	With each order Claire needs to generate 
 	a receipt to print for the customer
 	and to store for her records.
 
@@ -79,7 +90,7 @@ function calculateTax(quantity)
 	Tax
 	Total
 
-	When a customer places an they specify their
+	When a customer places an order, they specify their
 	name, and the quantity of cookies that they 
 	want to order (in dozens)
 
@@ -106,7 +117,22 @@ function calculateTax(quantity)
 */
 
 // create your function here
+function placeOrder(customer, quantity)
+{
+	const subtotal = calculateOrderSubtotal(quantity);
+	const tax = calculateTax(quantity);
+	const total = calculateOrderTotal(quantity);
 
+	const receipt = {
+						customer: customer,
+						quantity: quantity,
+						subtotal: subtotal,
+						tax: tax,
+						total: total
+	};
+
+	return receipt;
+}
 
 /*
 5.	Sean's classes have all earned a cookie party. 
@@ -128,3 +154,12 @@ function calculateTax(quantity)
 */
 
 // create your function here
+
+function calculateCookiesNeeded(a, b, everyoneElse)
+{
+	const aStudent = 4 * a;
+	const bStudent = 3 * b;
+	const otherStudent = 2 * everyoneElse;
+
+	return Math.ceil((aStudent + bStudent + otherStudent) / 12)
+}

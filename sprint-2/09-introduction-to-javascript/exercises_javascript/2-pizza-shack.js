@@ -12,7 +12,31 @@
 	getToppings("Cheese") => ["Cheese"]
 
 */
+function getToppings(pizza)
+{
+	const pizzaRecipes = {
+		"Hawaiian": ["Ham","Pineapple","Mushroom"],
+		"Cowboy": ["Pepperoni", "Sausage", "Beef"],
+		"Supreme": ["Pepperoni", "Sausage", "Pepper", "Onion", "Black Olives"],
+		"Vegetarian": ["Spinach", "Zucchini", "Mushroom", "Artichoke", "Tomato", "Onion"],
+		"Cheese": ["Cheese"]
+	}
 
+	function toTitleCase(str){
+		return str
+			.toLowerCase()
+			.split(' ')
+			.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+			.join(' ');
+	}
+
+	const standardizedPizzaName = toTitleCase(pizza);	
+
+	// if pizza exists, return toppings. else, return empty array
+	return pizzaRecipes[standardizedPizzaName] || [];
+
+	
+}
 
 
 
@@ -30,7 +54,29 @@
 
 */
 
+function makePizza(pizza)
+{
+	const pizzaRecipes = {
+		"Hawaiian": ["Ham","Pineapple","Mushroom"],
+		"Cowboy": ["Pepperoni", "Sausage", "Beef"],
+		"Supreme": ["Pepperoni", "Sausage", "Pepper", "Onion", "Black Olives"],
+		"Vegetarian": ["Spinach", "Zucchini", "Mushroom", "Artichoke", "Tomato", "Onion"],
+		"Cheese": ["Cheese"]
+	}
 
+	if (!(pizza in pizzaRecipes)) {
+		return {};
+	}
+
+	const toppings = getToppings(pizza);
+	const pizzaMade = {
+						name: pizza,
+						toppings: toppings
+	}
+
+		return pizzaMade;
+
+}
 
 
 /*
@@ -64,7 +110,17 @@
 
 */
 
+function makeCustom(...toppings){
 
+	if (toppings.length === 0) {
+		return {};
+	}
+
+	return {
+		name: "Custom",
+		toppings: toppings
+	};
+}
 
 
 /*
@@ -114,3 +170,59 @@
 
 */
 
+function createOrder(name, Hawaiian, Cowboy, Supreme, Vegetarian, Cheese){
+
+	const pizzaRecipes = {
+		"Hawaiian": ["Ham", "Pineapple", "Mushroom"],
+		"Cowboy": ["Pepperoni", "Sausage", "Beef"],
+		"Supreme": ["Pepperoni", "Sausage", "Pepper", "Onion", "Black Olives"],
+		"Vegetarian": ["Spinach", "Zucchini", "Mushroom", "Artichoke", "Tomato", "Onion"],
+		"Cheese": ["Cheese"]
+	};
+
+	const orderedPizzas = [];
+
+	if (Hawaiian) {
+		orderedPizzas.push({
+			name: "Hawaiian",
+			toppings: pizzaRecipes["Hawaiian"]
+		});
+	}
+
+	if (Cowboy) {
+		orderedPizzas.push({
+			name: "Cowboy",
+			toppings: pizzaRecipes["Cowboy"]
+		});
+	}
+
+	if (Supreme) {
+		orderedPizzas.push({
+			name: "Supreme",
+			toppings: pizzaRecipes["Supreme"]
+		});
+	}
+
+	if (Vegetarian){
+		orderedPizzas.push({
+			name: "Vegetarian",
+			toppings: pizzaRecipes["Vegetarian"]
+		});
+	}
+
+	if (Cheese) {
+		orderedPizzas.push({
+			name: "Cheese",
+			toppings: pizzaRecipes["Cheese"]
+		});
+	}
+
+	if (orderedPizzas.length === 0){
+		return {};
+	}
+
+	return {
+		customer: name,
+		pizzas: orderedPizzas
+	};
+}
