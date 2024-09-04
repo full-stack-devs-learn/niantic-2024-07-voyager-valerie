@@ -6,6 +6,7 @@ import com.niantic.services.CategoryDao;
 import com.niantic.services.ProductDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -17,17 +18,28 @@ public class ProductsController
     private ProductDao productDao = new ProductDao();
 
     // list all categories
-    @GetMapping( "/products")
+    @GetMapping("/products")
     public String products(Model model, @RequestParam(defaultValue = "1") int catId)
     {
-        var products = productDao.getProductsByCategory(catId);
+
         var category = categoryDao.getCategoryById(catId);
         var categories = categoryDao.getCategories();
 
         model.addAttribute("categories", categories);
         model.addAttribute("currentCategory", category);
-        model.addAttribute("products", products);
+
         return "products/index";
+    }
+
+    @GetMapping("/products/categories/{catId}")
+    public String productsByCategory(Model model, @PathVariable int catId)  {
+        var products = productDao.getProductsByCategory(catId);
+        var categories = categoryDao.getCategories();
+
+        model.addAttribute("products", products);
+        model.addAttribute("categories", categories);
+
+        return "products/fragments/products-table";
     }
 
     // details page
@@ -59,8 +71,14 @@ public class ProductsController
     }
 
     @PostMapping("/products/new")
-    public String saveProduct(@ModelAttribute("product") Product product)
+    public String saveProduct(Model model, @ModelAttribute("product") Product product, BindingResult result)
     {
+        if (result.hasErrors())
+        {
+            model.addAttribute("isInvalid", true);
+            // redirect to add page, since their input wasn't accepted
+            return "products/add";
+        }
 
         productDao.addProduct(product);
         return "redirect:/products?catId=" + product.getCategoryId();
