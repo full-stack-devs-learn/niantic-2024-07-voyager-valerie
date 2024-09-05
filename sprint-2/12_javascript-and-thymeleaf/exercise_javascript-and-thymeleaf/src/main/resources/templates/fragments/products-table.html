@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Product</th>
-        <th>Price</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
+<tbody>
     <tr th:each="product : ${products}">
         <td th:text="${product.productId}"></td>
         <td>
@@ -25,7 +10,6 @@
             <a th:href="@{|/products/${product.productId}/delete|}" class="btn btn-danger">Delete</a>
         </td>
     </tr>
-    </tbody>
-</table>
-</body>
-</html>
+</tbody>
+
+
