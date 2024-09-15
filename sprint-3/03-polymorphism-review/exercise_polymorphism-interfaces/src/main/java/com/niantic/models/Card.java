@@ -41,7 +41,7 @@ public class Card implements Comparable<Card>
         }
     }
 
-    // lookup map
+    // lookup map, value of the cards in the game
     private static final Map<String, Integer> cardValues = new HashMap<>()
     {{
         put("A", 11);
@@ -59,11 +59,29 @@ public class Card implements Comparable<Card>
         put("2", 2);
     }};
 
+    // how to prioritize the suits
     private static final Map<String, Integer> suitValues = new HashMap<>() {{
         put("spades", 1);
         put("hearts", 2);
         put("diamonds", 3);
         put("clubs", 4);
+    }};
+
+    // how to prioritize the cards within a suit (ie. k, q, j, 10 all share the same card value, but k >q > j > 10)
+    public static final Map<String, Integer> faceOrder = new HashMap<>() {{
+        put("A", 1);
+        put("K", 2);
+        put("Q", 3);
+        put("J", 4);
+        put("10", 5);
+        put("9", 6);
+        put("8", 7);
+        put("7", 8);
+        put("6", 9);
+        put("5", 10);
+        put("4", 11);
+        put("3", 12);
+        put("2", 13);
     }};
 
     @Override
@@ -72,33 +90,27 @@ public class Card implements Comparable<Card>
         String currentCardSuit = this.suit.toLowerCase();
         String otherCardSuit = o.suit.toLowerCase();
 
-        // prioritizes higher numbers (spade -> heart -> diamond -> club)
+        // compares suits
         int suitComparison = Integer.compare(
                 suitValues.get(currentCardSuit),
                 suitValues.get(otherCardSuit)
         );
 
-        // compare card value when suit is the same
+        // when the suit is the same, compare the face values
         if(suitComparison == 0)
         {
-            int currentValue = this.getPointValue();
-            int otherValue = o.getPointValue();
-
-            return Integer.compare(currentValue, otherValue);
+            return compareFaceCardValues(this.faceValue, o.faceValue);
         }
-        // todo: Exercise 1: implement Comparable<Card>
+
         return suitComparison;
     }
 
+    // ensures k > q > j > 10
+    private int compareFaceCardValues(String currentCard, String otherCard)
+    {
+        int currentCardValue = faceOrder.get(currentCard);
+        int otherCardValue  = faceOrder.get(otherCard);
 
-    // not working. 10, j, q ,k evaluated the same rn
-    private int compareFaceCardValues(String currentFaceCardValue, String otherFaceCardValue) {
-        final String[] faceOrder = {"10", "j", "q", "k", "a"};
-
-        int prioritized = java.util.Arrays.asList(faceOrder).indexOf(currentFaceCardValue);
-        int deprioritized = java.util.Arrays.asList(faceOrder).indexOf(otherFaceCardValue);
-
-        // sorts in descending order
-        return Integer.compare(deprioritized, prioritized);
+        return Integer.compare(otherCardValue, currentCardValue);
     }
 }
