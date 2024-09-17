@@ -3,6 +3,7 @@ package com.niantic.application;
 import com.niantic.models.Assignment;
 import com.niantic.services.GradesFileService;
 import com.niantic.services.GradesService;
+import com.niantic.services.StudentService;
 import com.niantic.ui.UserInput;
 
 import java.io.File;
@@ -15,6 +16,7 @@ public class GradingApplication implements Runnable
     private List<String> fileNames = new ArrayList<>();
     private List<Integer> studentScores = new ArrayList<>();
     private List<Assignment> assignments;
+    private StudentService  studentService = new StudentService();
 
     public void run()
     {
@@ -150,10 +152,6 @@ public class GradingApplication implements Runnable
                 String line = reader.nextLine();
                 var columns = line.split(",");
 
-                int assignmentNumber = Integer.parseInt(columns[0]);
-                String firstName = columns[1];
-                String lastName = columns[2];
-                String assignmentName = columns[3];
                 int score = Integer.parseInt(columns[4]);
 
                 studentScores.add(score);
@@ -228,17 +226,42 @@ public class GradingApplication implements Runnable
             }
         }
 
-        var files = gradesService.getFileNames();
-        String fileName = files.get(studentNumber);
-        var studentName = parseStudentName(fileName);
+        try
+        {
+            Student student = studentService.readStudentData(file);
+            studentService.createStudentSummaryReport(student);
+            System.out.println("Student summary report created successfully.");
+        }
+        catch (IOException e)
+        {
+            System.out.println("Error creating student summary report: " + e.getMessage());
+        }
+        }
 
-        appLogger.logMessage("Create student summary report for " + studentName);
     }
 
-    private String parseStudentName(String fileName)
-    {
-        return fileName.replace(".csv", "")
-                        .replace("_", " ")
-                        .substring(10);
+private int getStudentNumberFromUser() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Enter the index of the student file:");
+
+    while (true) {
+        try {
+            int studentNumber = Integer.parseInt(scanner.nextLine());
+            if (studentNumber >= 0 && studentNumber < fileNames.size()) {
+                return studentNumber;
+            } else {
+                System.out.println("Invalid index. Please enter a valid number.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid number.");
+        }
+
+
+        private String parseStudentName (String fileName)
+        {
+            return fileName.replace(".csv", "")
+                    .replace("_", " ")
+                    .substring(10);
+        }
     }
 }

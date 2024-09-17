@@ -1,64 +1,34 @@
 package com.niantic.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Student
 {
-    private String firstName;
-    private String lastName;
-    private int lowScore;
-    private double avgScore;
-    private int highScore;
+    private String name;
+    private StudentStatistics statistics;
 
-    public Student(String firstName, String lastName, int lowScore, double avgScore, int highScore)
+    public Student(String name, StudentStatistics statistics)
     {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.lowScore = lowScore;
-        this.avgScore = avgScore;
-        this.highScore = highScore;
+        this.name = name;
+        this.statistics = statistics;
     }
 
     public Student()
     {
     }
 
-    public int getHighScore() {
-        return highScore;
+    public String getName() {
+        return name;
     }
 
-    public void setHighScore(int highScore) {
-        this.highScore = highScore;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public double getAvgScore() {
-        return avgScore;
-    }
-
-    public void setAvgScore(double avgScore) {
-        this.avgScore = avgScore;
-    }
-
-    public int getLowScore() {
-        return lowScore;
-    }
-
-    public void setLowScore(int lowScore) {
-        this.lowScore = lowScore;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public StudentStatistics getStatistics()
+    {
+        return statistics;
     }
 
 }

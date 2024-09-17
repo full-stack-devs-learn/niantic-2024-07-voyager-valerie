@@ -22,6 +22,10 @@ public class UserInput
         System.out.println("  5) All Students: display average score");
         System.out.println("  6) All Assignments: display average score");
         System.out.println();
+        System.out.println("  ------------- File Creation -------------");
+        System.out.println("  7) Create Student Summary Report");
+        System.out.println("  8) Create All Students Report");
+        System.out.println();
         System.out.println("  0) Exit");
 
         System.out.println();
