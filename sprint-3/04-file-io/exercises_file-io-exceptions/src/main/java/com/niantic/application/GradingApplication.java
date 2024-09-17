@@ -38,6 +38,9 @@ public class GradingApplication implements Runnable
                 case 5:
                     displayAssignmentStatistics();
                     break;
+                case 7:         // didn't do the challenge problems, so no #5 or #6
+                    createStudentSummaryReport();
+                    break;
                 case 0:
                     UserInput.displayMessage("Goodbye");
                     System.exit(0);
@@ -87,10 +90,16 @@ public class GradingApplication implements Runnable
         String selectedFileName = fileNames.get(studentNumber);
         try {
             assignments = gradesService.getAssignments(selectedFileName);
+
+            System.out.printf("%-15s %-30s %-15s%n",
+                    "Assignment", "Assignment Name", "Score");
+            System.out.println("-".repeat(57));
+
             for (Assignment assignment : assignments) {
-                System.out.printf("Assignment Number: %d, Student Name: %s %s, Assignment Name: %s, Score: %d%n",
-                        assignment.getNumber(), assignment.getFirstName(), assignment.getLastName(),
-                        assignment.getAssignmentName(), assignment.getScore());
+                System.out.printf("%-15s %-30s %-15s%n",
+                        assignment.getNumber(),
+                        assignment.getAssignmentName(),
+                        assignment.getScore());
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + selectedFileName);
@@ -120,16 +129,14 @@ public class GradingApplication implements Runnable
             }
             catch (NumberFormatException e)
             {
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.println("Invalid input. Please enter a valid student number.");
             }
-
         }
 
         String selectedFileName = fileNames.get(studentNumber);
         File file = new File("files/" + selectedFileName);
 
         studentScores.clear();
-        String studentName = null;
 
         try (Scanner reader = new Scanner(file))
         {
@@ -192,6 +199,40 @@ public class GradingApplication implements Runnable
         // todo: 5 - Optional / Challenge - load all scores from all student and all assignments
         // display the statistics for each assignment (assignment name, low score, high score, average score)
         // this one could take some time
+    }
+
+    private void createStudentSummaryReport()
+    {
+        displayAllFiles();
+        System.out.println();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Above are the available student files. Which student file would you like to access? (Enter the index)");
+
+        int studentNumber;
+        while (true)
+        {
+            try
+            {
+                studentNumber = Integer.parseInt(scanner.nextLine());
+                if(studentNumber >= 0 && studentNumber < fileNames.size())
+                {break;}        // valid, so move on
+                else
+                {
+                    System.out.println("Invalid index. Please enter a number associated with the list below.");
+                }
+            }
+            catch (NumberFormatException e)
+            {
+                System.out.println("Invalid input. Please enter a valid student number.");
+            }
+        }
+
+        var files = gradesService.getFileNames();
+        String fileName = files.get(studentNumber);
+        var studentName = parseStudentName(fileName);
+
+        appLogger.logMessage("Create student summary report for " + studentName);
     }
 
     private String parseStudentName(String fileName)
