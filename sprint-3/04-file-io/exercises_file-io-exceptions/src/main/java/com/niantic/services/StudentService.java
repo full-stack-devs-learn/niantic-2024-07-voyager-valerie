@@ -52,14 +52,14 @@ public class StudentService
         }
 
         String reportName = createReportName(student.getName());
-        File reportFile = new File(reportsDir + reportName);
+        File reportFile = new File(reportsDir, reportName);
 
         try(PrintWriter out = new PrintWriter(reportFile))
         {
-            StudentStatistics statistics = new StudentStatistics(student.getStatistics().getScores());
+            StudentStatistics statistics = student.getStatistics();
 
             out.println(student.getName());
-            out.println("-".repeat(30));
+            out.println("-".repeat(40));
             out.printf("Low Score:                    %.2f\n", statistics.getLowScore());
             out.printf("Average Score:                %.2f\n", statistics.getAverageScore());
             out.printf("High Score:                   %.2f\n", statistics.getHighScore());

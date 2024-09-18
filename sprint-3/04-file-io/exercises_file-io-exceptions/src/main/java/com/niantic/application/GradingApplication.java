@@ -1,13 +1,14 @@
 package com.niantic.application;
 
 import com.niantic.models.Assignment;
+import com.niantic.models.Student;
+import com.niantic.models.StudentStatistics;
 import com.niantic.services.GradesFileService;
 import com.niantic.services.GradesService;
 import com.niantic.services.StudentService;
 import com.niantic.ui.UserInput;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
 public class GradingApplication implements Runnable
@@ -214,7 +215,7 @@ public class GradingApplication implements Runnable
             {
                 studentNumber = Integer.parseInt(scanner.nextLine());
                 if(studentNumber >= 0 && studentNumber < fileNames.size())
-                {break;}        // valid, so move on
+                    {break;}        // valid, so move on
                 else
                 {
                     System.out.println("Invalid index. Please enter a number associated with the list below.");
@@ -226,42 +227,60 @@ public class GradingApplication implements Runnable
             }
         }
 
-        try
+        String selectedFileName = fileNames.get(studentNumber);
+        File file = new File("files/" + selectedFileName);
+
+        Student selectedStudent = readStudentDataFromFile(file);
+
+        if (selectedStudent != null)
         {
-            Student student = studentService.readStudentData(file);
-            studentService.createStudentSummaryReport(student);
-            System.out.println("Student summary report created successfully.");
+            studentService.createStudentSummaryReport(selectedStudent);
         }
-        catch (IOException e)
+        else
         {
-            System.out.println("Error creating student summary report: " + e.getMessage());
-        }
+            System.out.println("Error: Could not find the student data.");
         }
 
     }
 
-private int getStudentNumberFromUser() {
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("Enter the index of the student file:");
+    private Student readStudentDataFromFile(File file) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
 
-    while (true) {
-        try {
-            int studentNumber = Integer.parseInt(scanner.nextLine());
-            if (studentNumber >= 0 && studentNumber < fileNames.size()) {
-                return studentNumber;
-            } else {
-                System.out.println("Invalid index. Please enter a valid number.");
+            List<Integer> scores = new ArrayList<>();
+            String firstName = null;
+            String lastName = null;
+
+            String line;
+
+            reader.readLine();
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length >= 5) {
+                    if (firstName == null && lastName == null) {
+                        firstName = data[1];
+                        lastName = data[2];
+                    }
+
+                    try {
+                        int score = Integer.parseInt(data[4]);
+                        scores.add(score);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid score format: " + data[4]);
+                    }
+                }
             }
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter a valid number.");
-        }
 
+            String fullName = firstName + " " + lastName;
 
-        private String parseStudentName (String fileName)
-        {
-            return fileName.replace(".csv", "")
-                    .replace("_", " ")
-                    .substring(10);
+            StudentStatistics statistics = new StudentStatistics(scores);
+            Student student = new Student(fullName, statistics);
+
+            return student;
+
+        } catch (IOException e) {
+            System.out.println("Error reading student file: " + e.getMessage());
+            return null;
         }
     }
 }
