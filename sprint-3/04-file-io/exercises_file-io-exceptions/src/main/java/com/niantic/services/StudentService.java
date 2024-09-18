@@ -8,40 +8,10 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+
 
 public class StudentService
 {
-    public Student studentDetails(File file)
-    {
-        List<Integer> scores = new ArrayList<>();
-        String studentName = extractStudentName(file.getName());
-
-        try (Scanner reader = new Scanner(file))
-        {
-            if(reader.hasNextLine())
-            {
-                reader.nextLine();
-            }
-
-            while(reader.hasNextLine())
-            {
-                String line = reader.nextLine();
-                String[] columns = line.split(",");
-
-                int score = Integer.parseInt(columns[4]);
-                scores.add(score);
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException("File not found: " + file.getName(), e);
-        }
-
-        StudentStatistics statistics = new StudentStatistics(scores);
-        return new Student(studentName, statistics);
-    }
-
     public void createStudentSummaryReport(Student student)
     {
         File reportsDir = new File("reports");
@@ -74,14 +44,5 @@ public class StudentService
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         return today.format(formatter) + "_" + studentName.replace(" ", "_") + ".txt";
-    }
-
-    private String extractStudentName(String fileName)
-    {
-        String fileSection = fileName.replace(".csv", "");
-        String[] parts = fileSection.split("_");
-
-        // assuming format is always "student_ID_first_last"
-        return parts[2] + " " + parts[3];
     }
 }

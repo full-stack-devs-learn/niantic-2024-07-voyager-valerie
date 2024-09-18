@@ -3,6 +3,7 @@ package com.niantic.application;
 import com.niantic.models.Assignment;
 import com.niantic.models.Student;
 import com.niantic.models.StudentStatistics;
+import com.niantic.services.AllStudentsService;
 import com.niantic.services.GradesFileService;
 import com.niantic.services.GradesService;
 import com.niantic.services.StudentService;
@@ -18,6 +19,7 @@ public class GradingApplication implements Runnable
     private List<Integer> studentScores = new ArrayList<>();
     private List<Assignment> assignments;
     private StudentService  studentService = new StudentService();
+    private AllStudentsService allStudentsService = new AllStudentsService();
 
     public void run()
     {
@@ -43,6 +45,9 @@ public class GradingApplication implements Runnable
                     break;
                 case 7:         // didn't do the challenge problems, so no #5 or #6
                     createStudentSummaryReport();
+                    break;
+                case 8:
+                    createAllStudentsReport();
                     break;
                 case 0:
                     UserInput.displayMessage("Goodbye");
@@ -282,5 +287,12 @@ public class GradingApplication implements Runnable
             System.out.println("Error reading student file: " + e.getMessage());
             return null;
         }
+    }
+
+    private void createAllStudentsReport()
+    {
+        allStudentsService.createAllStudentsReport();
+
+        System.out.println("All students report has been generated successfully!");
     }
 }
