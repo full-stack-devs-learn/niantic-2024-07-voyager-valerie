@@ -13,7 +13,7 @@ public class Product
     private int reOrderLevel;
     private boolean discontinued;
 
-    public Product(int productId, String productName, int supplierId, int categoryId,String quantityPerUnit, double unitPrice, int unitsInStock, int unitsOnOrder, int reOrderLevel, boolean discontinued)
+    public Product(int productId, String productName, int supplierId, int categoryId, String quantityPerUnit, double unitPrice, int unitsInStock, int unitsOnOrder, int reOrderLevel, boolean discontinued)
     {
         this.productId = productId;
         this.productName = productName;

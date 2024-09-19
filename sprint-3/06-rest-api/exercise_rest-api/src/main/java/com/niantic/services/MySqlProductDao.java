@@ -73,6 +73,46 @@ public class MySqlProductDao implements ProductDao
         return products;
     }
 
+    public Product getProductByCategory(int categoryId)
+    {
+        Product product = null;
+
+        String sql = """
+            SELECT product_id,
+                product_name,
+                supplier_id,
+                category_id,
+                quantity_per_unit,
+                unit_price,
+                units_in_stock,
+                units_on_order,
+                reorder_level,
+                discontinued
+            FROM products
+            WHERE category_id = ?
+            """;
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, categoryId);
+
+        if(row.next())
+        {
+            int productId = row.getInt("product_id");
+            String productName = row.getString("product_name");
+            int supplierId = row.getInt("supplier_id");
+            String quantityPerUnit = row.getString("quantity_per_unit");
+            double unitPrice = row.getDouble("unit_price");
+            int unitsInStock = row.getInt("units_in_stock");
+            int unitsOnOrder = row.getInt("units_on_order");
+            int reOrderLevel = row.getInt("reorder_level");
+            boolean discontinued = row.getBoolean("discontinued");
+
+            product = new Product(productId, productName, supplierId, categoryId, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, reOrderLevel, discontinued);
+
+        }
+
+        return product;
+    }
+
     public Product getProductById(int productId)
     {
         Product product = null;
@@ -170,7 +210,8 @@ public class MySqlProductDao implements ProductDao
                 product.getUnitsInStock(),
                 product.getUnitsOnOrder(),
                 product.getReOrderLevel(),
-                product.isDiscontinued()
+                product.isDiscontinued(),
+                id
         );
     }
 
