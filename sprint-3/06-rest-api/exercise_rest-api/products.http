@@ -1,0 +1,9 @@
+### GET request for all products
+GET http://localhost:8080/products
+
+### GET request for category 2
+GET http://localhost:8080/products/2
+
+### GET request for product 10
+GET http://localhost:8080/products/10
+
