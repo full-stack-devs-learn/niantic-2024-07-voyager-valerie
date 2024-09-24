@@ -20,6 +20,26 @@ document.addEventListener("DOMContentLoaded", function() {
 function loadProducts()
 {
     // load all products
+    productService.getAllProducts()
+                  .then(products => {
+            const productContainer = document.getElementById('products-container');
+            productContainer.innerHTML = '';
+
+            products.forEach(product => {
+                const clone = document.getElementById('product-template').content.cloneNode(true);
+                clone.getElementById('product-header').innerText = product.productName;
+                clone.getElementById('product-image').src = `images/${product.productId}.webp`;
+
+                const deleteButton = clone.querySelector('.card-footer #delete-button');
+                deleteButton.addEventListener('click', () => {
+                    productService.deleteProduct(product.productId).then(() => {
+                        loadProducts();
+                    });
+                });
+
+                productContainer.appendChild(clone);
+            });
+        });
 }
 
 function showForm()

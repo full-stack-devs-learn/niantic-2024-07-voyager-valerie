@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berries API</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="javascript/config.js"></script>
+    <script src="javascript/pages/berries.js"></script>
+    <script src="javascript/services/berries-service.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Berry Insightful</h1>
+    </header>
+
+
+    <section id="berry-buttons" class="buttons-container">
+        <h2>Choose a Berry</h2>
+    </section>
+
+    <section id="berry-info" class="info-container">
+        <h2>Berry Information</h2>
+
+        <div id="instructions" class="instructions">
+            <p>Pick a berry to learn more</p>
+        </div>
+
+        <img id="berry-image" alt="Berry Image" class="berry-img hidden">
+        <div id="berry-details"></div>
+        
+    </section>
+</body>
+</html>

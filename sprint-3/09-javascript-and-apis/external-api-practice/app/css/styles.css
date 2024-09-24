@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flexbox;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+h1, h2 {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.instructions {
+    margin: 20px auto;
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+}
+
+.hidden {
+    display: none;
+}
+
+.buttons-container {
+    margin: 20px 0;
+}
+
+.berry-img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.berry-btn {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.berry-btn:hover {
+    background-color: #e0e0e0;
+}
+
+#berry-info {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
