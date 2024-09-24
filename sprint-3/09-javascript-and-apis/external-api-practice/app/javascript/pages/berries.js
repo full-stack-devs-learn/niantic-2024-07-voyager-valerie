@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return new Promise((resolve, reject) => {
             const img = new Image();
             img.src = imageUrl;
-            img.onload = () => resolve(imageUrl); // Resolve if the image loads
-            img.onerror = () => reject(); // Reject if it fails to load
+            img.onload = () => resolve(imageUrl); // resolve if the image loads
+            img.onerror = () => reject(); // reject if it fails to load
         });
     };
 
@@ -46,32 +46,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const berryName = data.name;
                 const imagePaths = [
-                    `app/images/${berryName}.png`,
-                    `app/images/${berryName}.jpeg`,
-                    `app/images/${berryName}.webp`
+                    `/app/images/${berryName}.png`,
+                    `/app/images/${berryName}.jpeg`,
+                    `/app/images/${berryName}.webp`
                 ];
     
                 const loadImage = (index) => {
                     if (index >= imagePaths.length) {
                         console.error(`No image found for ${berryName}.`);
-                        berryImage.classList.add('hidden'); // hide image if not found
-                        return; // Exit if all types failed
+                        //berryImage.classList.add('hidden'); // hide image if not found
+                        return; // exit if all types failed
                     }
                     
                     console.log(`Checking image: ${imagePaths[index]}`); // Log current image being checked
                 
                     checkImage(imagePaths[index])
                         .then((src) => {
-                            console.log(`Image found: ${src}`); // Log found image source
-                            berryImage.src = src; // Load the found image
-                            berryImage.classList.remove('hidden'); // Show the image
+                            console.log(`Image found: ${src}`); // log found image source
+                            berryImage.src = src; // load the found image
+                            //berryImage.classList.remove('hidden'); // Show the image
                         })
                         .catch(() => {
-                            loadImage(index + 1); // Try the next image type
+                            loadImage(index + 1); // try the next image type
                         });
 
-                        loadImage();
                 };
+                loadImage(0);
                 
 
                 berryInfoContainer.innerHTML = `
