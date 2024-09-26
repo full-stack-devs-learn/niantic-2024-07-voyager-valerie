@@ -1,4 +1,4 @@
-
+import axios from 'axios'
 
 class ProductService
 {
@@ -12,4 +12,4 @@ class ProductService
 }
 
 const productService = new ProductService()
-export default productService
+export default productService;
