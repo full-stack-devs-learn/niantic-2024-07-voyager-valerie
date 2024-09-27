@@ -1,14 +1,30 @@
+import productService from '../../../services/product-service'
 import './ProductCard.css'
 import React from 'react'
 
-const ProductCard = ({ product }) => {
-    return (
-        <div className="product-card">
-            <h3>{product.productName}</h3>
-            <p>{product.categoryId}</p>
-            <p>Price: ${product.unitPrice}</p>
-        </div>
-    );
-};
+export default function ProductCard({product, unitPrice, categoryId, quantityPerUnit, onProductSelected})
+{
+    
+    const productClicked = () => {
+        onProductSelected(product);
+    };
 
-export default ProductCard;
+    return (
+        <div className="card product-card" onClick={productClicked}>
+            <div id="card-header" className="card-header">
+                <div className="product-name">
+                    {product}
+                </div>
+                <div className="product-price">
+                    ${unitPrice}
+                </div>
+            </div>
+
+            <div id="product-body" className="card-body">
+                <p>Category ID: {categoryId}</p>
+                <p>Quantity per Unit: {quantityPerUnit}</p>
+            </div>
+        </div>
+    )
+}
+

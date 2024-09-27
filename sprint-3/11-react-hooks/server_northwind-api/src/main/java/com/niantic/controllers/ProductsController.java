@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/products")
 public class ProductsController
 {
@@ -26,7 +27,28 @@ public class ProductsController
         this.logger = logger;
     }
 
-    @GetMapping
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllProducts()
+    {
+        try
+        {
+            var products = productDao.getAllProducts();
+
+            return ResponseEntity.ok(products);
+        }
+        catch (Exception e)
+        {
+            // log the error then return the exception
+            logger.logMessage(e.getMessage());
+
+            var error = new HttpError(HttpStatus.INTERNAL_SERVER_ERROR.value(), HttpStatus.INTERNAL_SERVER_ERROR.toString(), "Oops something went wrong");
+
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(error);
+        }
+    }
+
+    @GetMapping("/{categoryId}")
     public ResponseEntity<?> searchByCategory(@RequestParam(defaultValue = "1", name = "catId") Integer  categoryId)
     {
         try

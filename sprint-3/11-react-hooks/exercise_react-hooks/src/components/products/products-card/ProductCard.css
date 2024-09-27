@@ -1,0 +1,9 @@
+.card.product-card
+{
+    cursor: pointer;
+}
+
+.card.product-card:hover
+{
+    background-color: whitesmoke;
+}

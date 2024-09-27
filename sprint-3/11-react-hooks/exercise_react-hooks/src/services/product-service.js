@@ -2,7 +2,7 @@ import axios from 'axios'
 
 class ProductService
 {
-    baseUrl = 'http://localhost:8080/products'
+    baseUrl = 'http://localhost:8080/products/all'
 
     async getAllProducts()
     {

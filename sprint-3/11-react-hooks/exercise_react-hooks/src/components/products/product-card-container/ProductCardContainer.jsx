@@ -14,16 +14,17 @@ export default function ProductCardContainer()
             setProducts(data);
         });
     },
-    [])
+    []);
 
-    const productSelected = (name) => 
-    {
-        setSelectedProduct(name);
+     const productSelected = (name) => 
+     {
+        setSelectedProductId(name);
 
-        const productId = products.filter(product => product.productName === name)[0].productId;
+         const currentProduct = products.filter(product => product.name === name)[0];
 
-        setSelectedProductId(productId);
-    }
+         setSelectedProduct(currentProduct.name);
+         setSelectedProductId(currentProduct.id);
+     }
 
     return(
         <>
@@ -31,9 +32,13 @@ export default function ProductCardContainer()
             <main className="container mt-4 products-container" id="products-container">
             {
                 products.map((product) => (
-                    <ProductCard key={product.productId}
-                        product={product.productName}
-                        id={product.productId}
+                    <ProductCard 
+                        key={product.id}
+                        id={product.id}
+                        product={product.name}
+                        categoryId={product.categoryId}
+                        quantityPerUnit={product.quantityPerUnit}
+                        unitPrice={product.unitPrice}
                         onProductSelected={productSelected}
                     ></ProductCard>
                 ))

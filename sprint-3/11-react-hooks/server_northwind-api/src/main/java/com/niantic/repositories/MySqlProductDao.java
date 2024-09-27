@@ -1,5 +1,6 @@
 package com.niantic.repositories;
 
+import com.niantic.models.Category;
 import com.niantic.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -27,6 +28,30 @@ public class MySqlProductDao implements ProductDao
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    public List<Product> getAllProducts()
+    {
+        List<Product> products = new ArrayList<>();
+
+        String sql = """
+                SELECT product_id
+                    , product_name
+                    , category_id
+                    , quantity_per_unit
+                    , unit_price
+                FROM products;
+                """;
+
+        var row = jdbcTemplate.queryForRowSet(sql);
+
+        while (row.next())
+        {
+            Product product = mapRowToProduct(row);
+            products.add(product);
+        }
+
+        return products;
+    }
+
     @Override
     public List<Product> getByCategoryId(int categoryId)
     {
@@ -38,10 +63,11 @@ public class MySqlProductDao implements ProductDao
                     , category_id
                     , quantity_per_unit
                     , unit_price
-                FROM products;
+                FROM products
+                WHERE category_id=?;
                 """;
 
-        var row = jdbcTemplate.queryForRowSet(sql);
+        var row = jdbcTemplate.queryForRowSet(sql, categoryId);
 
         while (row.next())
         {

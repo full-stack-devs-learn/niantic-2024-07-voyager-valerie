@@ -12,7 +12,7 @@ export default function CategoriesPage()
             <header className="mt-4">
                 <h1>Categories</h1>
             </header>
-            <button className="btn btn-danger" onClick={()=> setAction("add")}>Add</button>
+            <button className="btn btn-danger" onClick={()=> setAction("add")}>Add Category</button>
 
             {action === "list" && <CategoryCardContainer></CategoryCardContainer>}
             {action === "add" && <CategoryAdd onCancel={()=>setAction("list")}
