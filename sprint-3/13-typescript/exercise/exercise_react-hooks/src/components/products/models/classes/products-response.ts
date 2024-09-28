@@ -1,4 +1,4 @@
-import {products} from ".products"
+import { Products } from "./products"
 
 export class ProductsResponse
 {
