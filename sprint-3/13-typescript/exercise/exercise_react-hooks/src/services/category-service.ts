@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { CategoriesResponse } from '../components/categories/models/categories-response';
+import { Categories } from '../components/categories/models/categories';
 
 class CategoryService
 {
@@ -7,17 +8,17 @@ class CategoryService
 
     async getAllCategories(): Promise<CategoriesResponse>
     {
-        const response = await axios.get<CategoriesResponse>("http://localhost:8080/categories");
+        const response = await axios.get<CategoriesResponse>(this.baseUrl);
         return response.data;
     }
 
-    async add(category)
+    async add(category: Categories): Promise<CategoriesResponse>
     {
-        const response = await axios.post(this.baseUrl, category);
+        const response = await axios.post<Categories>(this.baseUrl, category);
         return response.data;
     }
 
-    async delete(categoryId)
+    async delete(categoryId: number): Promise<void>
     {
         await axios.delete(`${this.baseUrl}/${categoryId}`)
     }
