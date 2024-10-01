@@ -2,7 +2,7 @@
 
 In this exercise you will create a new React project that uses Routing, instead of state management to navigate between pages.
 
-The goal of this exercise is to get you comfortable working with creating Routes, and using the browsers URL and navigation history to navigage between pages.
+The goal of this exercise is to get you comfortable working with creating Routes, and using the browsers URL and navigation history to navigate between pages.
 
 You will also pass information using URL path and query string parameters.
 

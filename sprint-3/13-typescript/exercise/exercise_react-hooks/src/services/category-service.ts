@@ -1,18 +1,17 @@
 import axios from 'axios'
-import { CategoriesResponse } from '../components/categories/models/categories-response';
 import { Categories } from '../components/categories/models/categories';
 
 class CategoryService
 {
     baseUrl = 'http://localhost:8080/categories'
 
-    async getAllCategories(): Promise<CategoriesResponse>
+    async getAllCategories(): Promise<Categories>
     {
-        const response = await axios.get<CategoriesResponse>(this.baseUrl);
+        const response = await axios.get<Categories>(this.baseUrl);
         return response.data;
     }
 
-    async add(category: Categories): Promise<CategoriesResponse>
+    async add(category: Categories): Promise<Categories>
     {
         const response = await axios.post<Categories>(this.baseUrl, category);
         return response.data;
