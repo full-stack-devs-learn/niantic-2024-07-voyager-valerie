@@ -17,7 +17,7 @@ export default function CategoryEdit()
                 const category = response.data
 
                 setCategoryName(category.categoryName)
-                setDescription(category.categoryDescription)
+                setDescription(category.description)
             }
             catch (error) {
                 console.log('Error getting the category', error)
