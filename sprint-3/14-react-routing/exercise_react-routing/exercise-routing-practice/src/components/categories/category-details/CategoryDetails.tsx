@@ -12,7 +12,7 @@ export default function CategoryDetails()
         async function fetchCategoryDetails() {
             try 
             {
-                const response = await axios.get<Category>(`http://localhost:8080/${categoryId}`)
+                const response = await axios.get<Category>(`http://localhost:4000/${categoryId}`)
                 setCategory(response.data)
             }
             catch (error) 

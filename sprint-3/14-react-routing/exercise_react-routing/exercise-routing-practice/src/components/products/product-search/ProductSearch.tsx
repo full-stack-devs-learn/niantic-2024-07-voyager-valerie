@@ -15,7 +15,7 @@ export default function ProductSearch()
 
     useEffect(() => {
         const getProducts = async () => {
-            const response = await axios.get(`http://localhost:8080/products`, {
+            const response = await axios.get(`http://localhost:4000/products`, {
                 params: {
                     minPrice,
                     maxPrice,

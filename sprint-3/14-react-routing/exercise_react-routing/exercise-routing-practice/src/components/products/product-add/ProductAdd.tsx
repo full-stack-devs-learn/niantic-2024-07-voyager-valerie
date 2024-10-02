@@ -19,7 +19,7 @@ export default function ProductAdd()
         }
 
         try {
-            await axios.post(`http://localhost:8080/products`, addProduct)
+            await axios.post(`http://localhost:4000/products`, addProduct)
             alert('Product added successfully!')
             navigate('/products')
         }

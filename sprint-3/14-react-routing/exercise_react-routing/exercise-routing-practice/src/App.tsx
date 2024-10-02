@@ -17,14 +17,14 @@ function App() {
 
       <main className="container mt-4">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<ProductList />}>
-            <Route path="search" element={<ProductSearch/>}/>
-            <Route path=":productId/edit" element={<ProductEdit />} />
-            <Route path="add" element={<ProductAdd />} />
-            <Route path=":productId" element={<ProductDetails />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/products' element={<ProductList />}>
+            <Route path='search' element={<ProductSearch/>}/>
+            <Route path=':productId/edit' element={<ProductEdit />} />
+            <Route path='add' element={<ProductAdd />} />
+            <Route path=':productId' element={<ProductDetails />} />
           </Route>
-          <Route path="/categories/*" element={<CategoryPage />} />
+          <Route path='/categories/*' element={<CategoryPage />} />
         </Routes>
       </main>
     </Router>

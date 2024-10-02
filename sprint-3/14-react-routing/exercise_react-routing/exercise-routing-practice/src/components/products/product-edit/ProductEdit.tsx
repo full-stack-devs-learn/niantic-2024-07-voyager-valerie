@@ -14,7 +14,7 @@ export default function ProductEdit()
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/products/${id}`)
+                const response = await axios.get(`http://localhost:4000/products/${id}`)
                 const product = response.data
 
                 setProductName(product.productName)
