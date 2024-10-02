@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import axios from "axios"
 import { Category } from "../../../models/category"
+import CategoryService from "../../../services/categories-service"
 
 export default function CategoryDetails()
 {
@@ -9,11 +9,15 @@ export default function CategoryDetails()
     const [category, setCategory] = useState<Category | null>(null)
 
     useEffect(() => {
+
+      const categoryService = new CategoryService()
+
         async function fetchCategoryDetails() {
             try 
             {
-                const response = await axios.get<Category>(`http://localhost:4000/${categoryId}`)
-                setCategory(response.data)
+                const response = await categoryService.getCategoriesById(Number(categoryId))
+                console.log('Fetched category:', response)
+                setCategory(response)
             }
             catch (error) 
             {
@@ -27,6 +31,8 @@ export default function CategoryDetails()
         <>
         {category ? (
           <div>
+            <button>Add</button>
+            <button>Edit</button>
             <h4>{category.categoryName}</h4>
             <p>{category.description}</p>
           </div>

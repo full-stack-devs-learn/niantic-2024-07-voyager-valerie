@@ -39,7 +39,7 @@ export default function ProductEdit()
         };
     
         try {
-          await axios.put(`http://localhost:8080/products/${id}`, updatedProduct);
+          await axios.put(`http://localhost:4000/products/${id}`, updatedProduct);
           alert('Product updated successfully!');
           navigate(`/products/${id}`);  // redirect to product details page
         } catch (error) {

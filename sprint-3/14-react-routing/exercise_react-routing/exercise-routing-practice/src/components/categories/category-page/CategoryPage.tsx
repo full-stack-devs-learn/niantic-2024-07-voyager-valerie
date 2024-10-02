@@ -10,9 +10,6 @@ export default function CategoryPage() {
     <div>
       <h1>Categories</h1>
 
-        {/* passes categories prop here */}
-        {/* <CategoryList categories={categories} /> */}
-
       <Routes>
         {/* nested routes for categories */}
         <Route path='' element={<CategoryList />} />

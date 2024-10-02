@@ -17,7 +17,7 @@ export default function CategoryAdd()
         }
 
         try {
-            await axios.post(`http://localhost:8080/categories`, addCategory)
+            await axios.post(`http://localhost:4000/categories`, addCategory)
             alert('Category added successfully!')
             navigate('/categories')
         }

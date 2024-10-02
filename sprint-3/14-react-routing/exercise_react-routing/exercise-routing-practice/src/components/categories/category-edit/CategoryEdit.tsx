@@ -13,7 +13,7 @@ export default function CategoryEdit()
     useEffect(() => {
         const getCategory = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/categories/${id}`)
+                const response = await axios.get(`http://localhost:4000/categories/${id}`)
                 const category = response.data
 
                 setCategoryName(category.categoryName)
@@ -36,7 +36,7 @@ export default function CategoryEdit()
         };
     
         try {
-          await axios.put(`http://localhost:8080/categories/${id}`, updatedCategory);
+          await axios.put(`http://localhost:4000/categories/${id}`, updatedCategory);
           alert('Category updated successfully!');
           navigate(`/categories/${id}`);  // redirect to product details page
         } catch (error) {

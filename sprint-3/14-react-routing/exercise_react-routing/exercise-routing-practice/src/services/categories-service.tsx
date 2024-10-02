@@ -18,6 +18,18 @@ export default class CategoryService
 
     }
 
+    async getCategoriesById(categoryId: number): Promise<Category>{
+        try{
+            const url = `${this.baseUrl}/${categoryId}`
+            const response = await axios.get<Category>(url)
+            return response.data
+        }
+        catch (error){
+            console.error(`Error fetching category with ID ${categoryId}:`, error)
+            throw error
+        }
+    }
+
     async addCategories(category: Category): Promise<Category>
     {
         try{
