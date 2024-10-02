@@ -1,11 +1,24 @@
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom"
+import { Category } from "../../../models/category"
 
-export default function CategoryList()
+interface CategoryListProps {
+    categories: Category[];
+  }
+
+export default function CategoryList({ categories }: CategoryListProps)
 {
-    const params = useParams()
-
     return (
-        <h4>Category Details - Category Id: {params.categoryId}</h4>
-    )
-
+        <>
+        <ul>
+          {categories.map((category: Category) => (
+            <li key={category.categoryId}>
+              <Link to={`/categories/${category.categoryId}`}>
+                <strong>{category.categoryName}</strong>
+              </Link>
+              <p>{category.description}</p>
+            </li>
+          ))}
+        </ul>
+        </>
+      )
 }
