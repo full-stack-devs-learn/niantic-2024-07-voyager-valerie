@@ -17,7 +17,7 @@ export default function CategoryAdd()
         }
 
         try {
-            await axios.post(`http://localhost:4000/categories`, addCategory)
+            await axios.post(`http://localhost:8080/categories`, addCategory)
             alert('Category added successfully!')
             navigate('/categories')
         }
@@ -47,7 +47,7 @@ export default function CategoryAdd()
                            required
                     />
                 </div>
-                <button type="submit">Add Category</button>
+                <button type="submit" className="btn btn-primary mb-3">Add Category</button>
             </form>
         </div>
         
