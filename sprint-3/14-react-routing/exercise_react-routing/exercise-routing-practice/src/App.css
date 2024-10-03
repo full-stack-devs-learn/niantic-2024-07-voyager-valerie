@@ -6,3 +6,24 @@ ul {
   li strong {
     font-size: larger;
   }
+
+  #category-details {
+    margin-top: 15px;
+  }
+
+  #category-details button {
+    display: block;
+    margin-bottom: 15px !important;
+  }
+
+  #category-details button:hover {
+    cursor: pointer;
+  }
+
+  #category-details h2 {
+    margin-bottom: 10px; 
+  }
+
+  #category-details p {
+    line-height: 1.5; 
+  }

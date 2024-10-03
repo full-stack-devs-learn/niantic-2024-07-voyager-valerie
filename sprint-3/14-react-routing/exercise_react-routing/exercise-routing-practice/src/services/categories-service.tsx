@@ -55,14 +55,15 @@ export default class CategoryService
 
     }
 
-    async deleteCategory(id: number)
+    async deleteCategory(categoryId: number): Promise<void>
     {
         try{
-            const url = `${this.baseUrl}/${id}`
+            const url = `${this.baseUrl}/${categoryId}`
             await axios.delete<void>(url)
         }
         catch (error) {
             console.error("Error deleting this category", error)
+            throw error
         }
 
     }

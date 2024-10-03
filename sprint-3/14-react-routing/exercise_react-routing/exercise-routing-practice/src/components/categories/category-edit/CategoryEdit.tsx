@@ -13,7 +13,7 @@ export default function CategoryEdit()
     useEffect(() => {
         const getCategory = async () => {
             try {
-                const response = await axios.get(`http://localhost:4000/categories/${id}`)
+                const response = await axios.get(`http://localhost:4000/categories/${id}/edit`)
                 const category = response.data
 
                 setCategoryName(category.categoryName)
